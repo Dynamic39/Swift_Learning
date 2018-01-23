@@ -56,10 +56,36 @@ Swift에서는 상위 세가지 개념들이 유기적인 관계를 가지며, �
 	```
 	
 * ViewController 간 이동, Segue
-	1) 
+	1) ViewController 간 이동시, Segue를 통하여 이동할 수 있다</br>
+	2) Present modally, show 등을 사용하여, ViewController 간 이동이 가능하다.</br>
+	3) Dismiss method 를 통하여, 이동하기전 ViewController로 돌아가는 것이 가능하다. </br>
+	```
+	    @IBAction func closeTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+	```
 
-
-
+### PART2 - Swift Styling the App
+* Assets 폴더를 활용하여, 이미지를 등록 / 사용 할 수 있다.</br>
+* 코드를 사용하여, UI설정을 할 수 있으며, Assets에 등록된 아이템의 경우, 파일명을 직접 호출하여 사용 할 수 있다.</br>
+	```
+	        //슬라이더의 UI를 코드로 작성하여 준다.
+        let thumbImageNormal = #imageLiteral(resourceName: "SliderThumb-Normal") // UIImage(named: "SlideThumb-Normal")
+        slider.setThumbImage(thumbImageNormal, for: .normal)
+        
+        let thumbImageHighlighted = #imageLiteral(resourceName: "SliderThumb-Highlighted") // UIImage(named: "SlideThumb-Highlighted")
+        slider.setThumbImage(thumbImageHighlighted, for: .highlighted)
+        
+        //인셋을 설정한다.
+        let insets = UIEdgeInsets(top: 0, left: 14, bottom: 0, right: 14)
+        let trackLeftImage = #imageLiteral(resourceName: "SliderTrackLeft") // UIImage(named: "SliderTrackLeft")
+        let trackLeftResizable = trackLeftImage.resizableImage(withCapInsets: insets)
+        slider.setMinimumTrackImage(trackLeftResizable, for: .normal)
+        
+        let trackRightImage = #imageLiteral(resourceName: "SliderTrackRight") // UIImage(named: "SliderTrackRight")
+        let trackRightResizable = trackRightImage.resizableImage(withCapInsets: insets)
+        slider.setMaximumTrackImage(trackRightResizable, for: .normal)
+	```
 
 
 
