@@ -15,10 +15,14 @@ class ViewController: UIViewController {
     
     //현재 슬라이더 값을 담을 변수를 선언한다. default 값은 슬라이더의 초기 실행값과 동일하게 해준다.
     //Instance Scope
-    var currentValue: Int = 0
-    var targetValue:Int = 0
+    var currentValue = 0
+    var targetValue = 0
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var randomLB: UILabel!
+    @IBOutlet weak var scoreLB: UILabel!
+    var score = 0 // 해당 변수의 경우 Int Type으로 추론이 가능해진다.
+    var round = 0
+    @IBOutlet weak var roundLB: UILabel!
     
 
 
@@ -26,7 +30,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         currentValue = lroundf(slider.value)
-        startNewRound()
+        startNewGame()
         
     }
 
@@ -35,12 +39,22 @@ class ViewController: UIViewController {
         
     }
     
+    @IBAction func startNewGame(){
+        score = 0
+        round = 0
+        startNewRound()
+    }
+    
+    
     func updateValue(){
         randomLB.text = String(targetValue)
+        scoreLB.text = String(score)
+        roundLB.text = String(round)
     }
     
     func startNewRound() {
         
+        round += 1
         targetValue = Int(arc4random_uniform(100)) + 1
         currentValue = 50
         slider.value = Float(currentValue)
@@ -62,19 +76,45 @@ class ViewController: UIViewController {
         
         //if else 문을 사용함
         //슬라이더의 값과, 타겟값의 차이를 찾아냄
-        let difference: Int = abs(targetValue - currentValue)
-        let points = 100 - difference
+        let difference = abs(targetValue - currentValue)
+        var points = 100 - difference
         
+        
+        let title: String
+        
+        if difference == 0 {
+            title = "Perfect!"
+            points += 100
+        } else if difference < 5 {
+            title = "You almost had it!"
+            if difference == 1 {
+                points += 50
+            }
+        } else if difference < 10 {
+            title = "Pretty Good!"
+        } else {
+            title = "not even close.."
+        }
+        
+        score += points
         
         //Local Scope
         let massage = "You scored \(points) points"
         
-        let alert = UIAlertController(title: "Hello, World", message: massage, preferredStyle: .alert)
-        let action = UIAlertAction(title: "Awesome", style: .default, handler: nil)
+        let alert = UIAlertController(title: title, message: massage, preferredStyle: .alert)
+        
+        // 간단한 클로저 실행
+        // UIAlert의 경우, handler에 다음 행동을 넣게 되면, 해당 액션이 실행된 후, 다음 명령이 실행된다. 해당 형태를 클로져라고 한다.
+        // 클로져는 여러 형태가 있으나, {} 기호를 삽입하여, 클로져를 실행 할 수 있도록 해준다.
+        let action = UIAlertAction(title: "Awesome", style: .default, handler: {
+            action in
+            //메서드 내에서 실행이므로 self를 기재하여 준다
+            self.startNewRound()
+        })
+        
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
         
-        startNewRound()
 
     }
 
