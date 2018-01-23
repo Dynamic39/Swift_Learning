@@ -86,6 +86,16 @@ Swift에서는 상위 세가지 개념들이 유기적인 관계를 가지며, �
         let trackRightResizable = trackRightImage.resizableImage(withCapInsets: insets)
         slider.setMaximumTrackImage(trackRightResizable, for: .normal)
 	```
+* Xcode의 Attributes Inspector 를 통하여, 여러 인스턴스 값들을 조정할 수 있다.
+* Autolayout
+	1) 여러 iOS 기기에 대응하기 위하여, 오토 레이아웃을 적용할 수 있다.</br>
+	2) 전체 스크린을 기준으로 자동으로 대응이 되기도 하며, 한 객체의 절대 값을 지정 후, 수평, 수직 조절을 통하여 오토 레이아웃을 적용한다.</br>
+	3) 코드로도 가능하며, 코드 오토레이아웃은 추후 다루도록 한다.</br>
+* App Icon 설정하기
+	1) PNG 이미지를 준비한다.</br>
+	2) 각 기기별, 상황별에 맞게 이미지의 픽셀을 설정한 후, Assets 에 각 항목에 맞게 드래그하여 업로드 해준다.</br>
+	
+	
 
 
 

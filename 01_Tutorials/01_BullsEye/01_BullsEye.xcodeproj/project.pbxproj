@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		FC905A662016D34600BFE914 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC905A652016D34600BFE914 /* AboutViewController.swift */; };
 		FC905A682016D5D700BFE914 /* AboutMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC905A672016D5D700BFE914 /* AboutMeViewController.swift */; };
+		FC905A6A20171A4200BFE914 /* BullsEye.html in Resources */ = {isa = PBXBuildFile; fileRef = FC905A6920171A4200BFE914 /* BullsEye.html */; };
 		FCF45A631FDAB91B00D99E85 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF45A621FDAB91B00D99E85 /* AppDelegate.swift */; };
 		FCF45A651FDAB91B00D99E85 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF45A641FDAB91B00D99E85 /* ViewController.swift */; };
 		FCF45A681FDAB91B00D99E85 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCF45A661FDAB91B00D99E85 /* Main.storyboard */; };
@@ -19,6 +20,7 @@
 /* Begin PBXFileReference section */
 		FC905A652016D34600BFE914 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		FC905A672016D5D700BFE914 /* AboutMeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutMeViewController.swift; sourceTree = "<group>"; };
+		FC905A6920171A4200BFE914 /* BullsEye.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = BullsEye.html; sourceTree = "<group>"; };
 		FCF45A5F1FDAB91B00D99E85 /* 01_BullsEye.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 01_BullsEye.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCF45A621FDAB91B00D99E85 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FCF45A641FDAB91B00D99E85 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				FCF45A621FDAB91B00D99E85 /* AppDelegate.swift */,
+				FC905A6920171A4200BFE914 /* BullsEye.html */,
 				FCF45A641FDAB91B00D99E85 /* ViewController.swift */,
 				FC905A652016D34600BFE914 /* AboutViewController.swift */,
 				FC905A672016D5D700BFE914 /* AboutMeViewController.swift */,
@@ -130,6 +133,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCF45A6D1FDAB91B00D99E85 /* LaunchScreen.storyboard in Resources */,
+				FC905A6A20171A4200BFE914 /* BullsEye.html in Resources */,
 				FCF45A6A1FDAB91B00D99E85 /* Assets.xcassets in Resources */,
 				FCF45A681FDAB91B00D99E85 /* Main.storyboard in Resources */,
 			);
