@@ -96,6 +96,217 @@ Swift에서는 상위 세가지 개념들이 유기적인 관계를 가지며, �
 	2) 각 기기별, 상황별에 맞게 이미지의 픽셀을 설정한 후, Assets 에 각 항목에 맞게 드래그하여 업로드 해준다.</br>
 	
 	
+### PART3
+1) Programming in Swift : Core Concepts
+
+* Playground 활용
+* comment 활용(주석 활용)
+* Tuple 활용
+
+	```
+	//Tuple에 대한 간단한 정리
+	// 2가지이상의 값을 하나의 변수에 지정할 수 있다.
+	let coordinates : (Int, Int) = (2, 3)
+
+	// 타입 추론 기능을 지원한다.
+	let coordinatesDouble = (2.3, 2.5)
+	// 다른 타입이 같이 쓰일 수 있다
+	let coordinatesMixed: (Double, Int) = (2.5, 2)
+
+	// 변수의 Index 번호를 통하여, 값을 가져올 수 있다.
+	let x1 = coordinates.0
+	let y1 = coordinates.1
+
+	// Tuple 안에 있는 인덱스 값을 설정하여 줄수 있다
+	let coordinatesNamed = (x: 2, y: 3)
+	let x2 = coordinatesNamed.x
+	let y2 = coordinatesNamed.y
+	
+	let coordinates3D = (x: 2, y: 3, z: 1)
+	// 변수명 세개를 Tuple에 값을 이용하여 한줄로도 표현이 가능하다.
+	let (x3, y3, z3) =  coordinates3D
+	//변수명 세개 이상인 경우, 그 중 일부만 값을 가져오고 싶을때, 와일드카드(_)를 활용하여 데이터를 참조할 수 있다.
+	let (x4, y4, _) = coordinates3D
+
+	```
+	
+* Boolean 활용
+
+	```
+		//Booleans에 대하여
+	//True or False인가를 식별하는 타입이다.
+	
+	//타입추론이 되기 때문에, Bool을 빼고 기재해도 오류가 나지 않는다.
+	let yes:Bool = true
+	let no:Bool = false
+	
+	//다음은 Boolean 값을 변수명으로 설정하여 표기한 에제이다.
+	let doesOneEqualTwo = (1 == 2)
+	let doesNotEqualTwo = (1 != 2)
+	
+	let isOneGreaterThanTwo = (1 > 2)
+	let isOneLessThanTwo = (1 < 2)
+	
+	let and = true && true
+	let or = false || false || true
+	
+	let andTrue = 1 < 2 && 4 > 3
+	let andFalse = 1 < 2 && 3 > 4
+	
+	let orTrue = 1 < 2 || 3 > 4
+	let orFalse = 1 == 2 || 3 == 4
+	
+	//예제
+	let guess = "cat"
+	let dogEqualsCat = guess == "dog"
+	
+	let order = "cat" < "dog"
+	let a = 5
+	let b = 10
+	
+	//a가 b 보다 작을 경우, a의 값을 반환해 주고 그렇지 않을 경우 "?" 마크를 사용하여, a에 대입해줄 숫자를 정한다.
+	//두가지 변수의 크기많을 비교하여, True일때는 a를 그렇지 않을 경우 b를 반환해준다.
+	let min = a < b ? a : b
+	```
+* Scope 
+
+ ```
+	//Scope 에 대하여
+	
+	var hoursWorked = 45
+	var price = 0
+	
+	if hoursWorked > 40 {
+	    let hoursOver40 = hoursWorked - 40
+	    price += hoursOver40 * 50
+	    hoursWorked -= hoursOver40
+	}
+	
+	price += hoursWorked * 25
+	print(price)
+	
+	// print(hoursOver40) 컴파일 에러 : scope가 종료된 변수를 요청하였기 때문에
+ ```
+
+2) Programming in Swift : Flow Control
+
+* While Loops
+
+	```
+	
+	//While Loops 에 대하여
+	
+	var i = 1
+	
+	//while 문을 사용하여, 해당 조건이 false 가 될때까지 계속해서 while 문안에 있는 내용을 실행한다.
+	while i < 10 {
+	    print(i)
+	    i += 1
+	}
+	print("- - -")
+	
+	// repeat문을 활용한 while 문을 구현하여 보자.
+	i = 10
+	// repeat안에 구문이 계속 해서 실행된다.
+	// repeat문은 while 문의 true // false 여부에 관계없이 최초 1회는 무조건 실행된다.
+	repeat {
+	    print(i)
+	//    if i == 5 {
+	//        break
+	//    }
+	    i += 1
+	} while i < 10 // 해당 조건이 만족하지 않을때까지 repeat문은 게속해서 실행이된다.
+	print(i)
+	print("- - -")
+	```
+* for Loops
+
+	```
+	
+	//For Loops 에 대하여
+	
+	let closedRange = 0...5
+	
+	let halfOpenRange  = 0..<5
+	
+	var sum = 0
+	let count = 10
+	
+	//for 문의 경우 in 이후의 값이 차레대로 대입이 되면서 반복 작업을 진행한다.
+	for i in 1...count {
+	    sum += i
+	}
+	print(sum)
+	
+	//변수명을 지정해줄때, " _ " 를 쓸 수 있다.
+	for _ in 0..<count {
+	    print("Hodor!")
+	}
+	
+	for i in 1...count {
+	    
+	    //if 문의 true에 해당하는 아이템만 실행된다.
+	    if i % 2 == 0 {
+	        print("\(i) is ad odd number!")
+	    }
+	}
+	```
+* Switch
+
+	```
+	//Switch Loops 에 대하여
+	// 스위치문은 특정 변수의 값에 따라서 그 값에 해당하는 다음 행동을 시행하는 것을 말한다.
+	let number = 10
+	switch number {
+	case 0:
+	    print("Zero")
+	case 1...9:
+	    print("Between 1 and 9")
+	case 10:
+	    print("Ten")
+	default:
+	    print("Undefined")
+	}
+	
+	let string = "Dog"
+	
+	switch string {
+	case "Dog", "Cat":
+	    print("Animal is a house pet")
+	default:
+	    print("Animal is not a house pet")
+	}
+	
+	
+	switch number {
+	case _ where number % 2 == 0:
+	    print("Even \(number)")
+	default:
+	    print("Odd")
+	}
+	
+	//Tuple, Where를 이용한 스위치 문작성도 가능하다.
+	let coordinates = (x:2, y:2, z:5)
+	switch coordinates {
+	case (0, 0, 0):
+	    print("Origin")
+	case (let x, 0, 0):
+	    print("On the x-axis at x=\(x)")
+	case (0, let y, 0):
+	    print("On the y-axis at y=\(y)")
+	case (0, 0, let z):
+	    print("On the z-axis at z=\(z)")
+	case let (x, y, _) where y == x:
+	    print("Along the y=x line.")
+	case let (x, y, _) where y == x * x:
+	    print("Along the y=x^2 line.")
+	    
+	case let (x, y, z):
+	    print("Somewhere in space at x=\(x), y=\(y), z=\(z)")
+	}
+	```
+	
+	
 
 
 
