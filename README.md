@@ -674,8 +674,8 @@ Swift에서는 상위 세가지 개념들이 유기적인 관계를 가지며, �
 5) Programming in Swift : Structures
 
 * [Structure](https://github.com/Dynamic39/Swift_Learning/blob/master/01_Tutorials/structures/structures-starter.playground/Contents.swift)
-* [Protocol]()
-* [Properties]()
+* [Protocol](https://github.com/Dynamic39/Swift_Learning/blob/master/01_Tutorials/protocols/protocols-starter.playground/Contents.swift)
+* [Properties](https://github.com/Dynamic39/Swift_Learning/blob/master/01_Tutorials/Properties/Propeties.playground/Contents.swift)
 
 
 
