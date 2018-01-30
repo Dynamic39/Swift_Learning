@@ -473,8 +473,92 @@ Swift에서는 상위 세가지 개념들이 유기적인 관계를 가지며, �
 	var mustHaveResult = optionalInt ?? 0
 	```
 
+4) Programming in Swift : Collections and Closure
 
+* Array
+	
+	```
+	// Array란? 변수안에 배열을 넣어서 값들을 가지고 있는 형태중 하나를 말한다.
+	// Index가 0번부터 시작하므로, 데이터를 참조할 시, 0번부터 호출하여 사용이 가능하다.
+	
+	var evenNumbers:[Int] = [2, 4, 6, 8]
+	let evenNumbers2: Array<Int> = [2, 4, 6, 8]
+	
+	//배열에 새로운 값을 추가/삭제/변경 하는 방법
+	evenNumbers.append(10)
+	evenNumbers += [12, 14, 16]
+	evenNumbers.insert(0, at: 0)
+	evenNumbers.remove(at: 0) // 지우고자 하는 인덱스를 지정하여 준다.
+	evenNumbers[0] = -2 // 기존에 있던 값에서 새롭게 지정한 값으로 변경된다.
+	
+	//배열을 활용하는 여러 인스턴스가 있다.
+	print(evenNumbers.isEmpty)
+	print(evenNumbers.count)
+	print(evenNumbers.first)
+	
+	//배열에 있는 숫자를 가져오기 위해선 인덱스 넘버를 지정해줘야 한다.
+	var firstElement = evenNumbers[0]
+	print(firstElement)
+	let firstThree = evenNumbers[0...2]
+	print(firstThree)
+	
+	//배열의 값을 하나씩 확인하는 방법
+	for evenNumber in evenNumbers {
+	    print(evenNumber)
+	}
+	
+	//배열의 인덱스 값도 같이 확인하는 방법(Tuple을 활용하여 진행)
+	for (index, evenNumber) in evenNumbers.enumerated() {
+	    print("evenNumbers[\(index)] = \(evenNumber)")
+	}
+	```
 
+* Dictionary
+
+	```
+	//Dictionary란? 키값에 해당하는 value값을 가지는 형식으로 인덱스 대신에 정확한 키값이 있는 것이 특징이다.
+	
+	var namesAndScores:[String:Int] = ["Anna":2, "Brian":2, "Craig":8, "Donna":6]
+	print(namesAndScores)
+	
+	var namesAndScores2: Dictionary<String, Int> = ["Anna":2, "Brian":2, "Craig":8, "Donna":6]
+	print(namesAndScores2)
+	
+	//딕셔너리 활용 예
+	//직접 키값을 가져와 값을 가지고 오거나, 배열처럼, 카운팅이 가능하다.
+	print(namesAndScores["Anna"]) // 키값이 정확하지 않을 수 있으므로, 옵셔널이다.
+	print(namesAndScores["Craig1"]) // nil이 반환된다.
+	
+	namesAndScores.isEmpty
+	namesAndScores.count
+	namesAndScores["Anna"] = 10
+	
+	
+	//딕셔너리 안에 있는 데이터를 하나씩 가져오는 방법
+	//위치별로 컴파일러가 인식하기 때문에, player가 key값을, score가 value값을 가진다.
+	for (player, score) in namesAndScores {
+	    print("\(player) has a score of \(score)")
+	}
+	
+	//key 값만 별도로 가져올 수도 있다.
+	for player in namesAndScores.keys {
+	    print("\(player)")
+	}
+	```
+	
+* Set
+
+	```
+	//Set이란? 유니크한 값을 가지는 형태로 중복되지 않은 형태로 가지고 있는 것을 말한다.
+	
+	var someSet:Set<Int> = [1, 2, 3, 1]
+	print(someSet) // 중복되는 값을 없어지므로, [2, 3, 1] 만 프린트된다.
+	print(someSet.contains(1)) // 값이 있으므로, true값이 반환된다.
+	print(someSet.contains(99)) // 값이 없으므로 false 값이 반환된다.
+	someSet.insert(5)
+	print(someSet)
+	someSet.remove(3)
+	```
 
 
 
