@@ -559,7 +559,121 @@ Swift에서는 상위 세가지 개념들이 유기적인 관계를 가지며, �
 	print(someSet)
 	someSet.remove(3)
 	```
+* Clousure
 
+	```
+	//Closure 란? 메서드안에서 추가로 시행되기 위하여 만들어놓는 기능
+	
+	var multiplyClosure: (Int, Int) -> Int
+	multiplyClosure = { (a: Int, b:Int) -> Int in
+	        return a * b
+	}
+	//클로저 형식을 만들어 놓는다.
+	var addClosure: (Int, Int) -> Int = { a, b in
+	    return a + b
+	}
+	let result = multiplyClosure(4, 2)
+	
+	//클로져는 메서드의 파라미터로 이용될 수 있다.
+	func operateOnNumbers(_ a: Int, _ b:Int, operation:(Int, Int) -> Int) -> Int {
+	    let result = operation(a, b)
+	    print(result)
+	    return result
+	}
+	
+	//이미 만들어진 클로저를 대입하여, 값을 확인 할 수 있다.
+	let randomMulti = operateOnNumbers(2, 4, operation: multiplyClosure)
+	let randomPlus = operateOnNumbers(2, 4, operation: addClosure)
+	print(randomMulti)
+	print(randomPlus)
+	
+	//클로저를 직접 작성할 수 있다.
+	let randomDivide = operateOnNumbers(10, 2, operation: { $0 / $1 })
+	print(randomDivide)
+	
+	let voidClousure: () -> Void = {
+	    print("Swift Apprentice is awesome!")
+	}
+	
+	print(voidClousure)
+	
+	//클로져의 캡쳐 기능
+	var counter = 0
+	let incrementCounter = {
+	    counter += 1
+	}
+	incrementCounter()
+	incrementCounter()
+	print(counter)
+	
+	//클로져의 캡쳐기능으로 인해, counter 변수가 하나씩 합쳐진다.
+	func countingClousure() -> () -> Int {
+	    var counter = 0
+	    let incrementingCounter: () -> Int = {
+	        counter += 1
+	        return counter
+	    }
+	    return incrementingCounter
+	    
+	}
+	let counter1 = countingClousure()
+	let counter2 = countingClousure()
+	
+	counter1()
+	counter1()
+	counter1()
+	counter2()
+	
+	```
+	
+* Closures and Collection [추가 예문]
+	
+	```
+	//Collection and Clousre 추가
+	//String 배열의 정리, Sort함수.
+	let names = ["Zeplin", "Banford", "Applejohn", "Cutford"]
+	//ABC 순서로 하고 싶을때
+	let arrangedNames = names.sorted()
+	print(arrangedNames)
+	
+	//ABC 역순서로 하고 싶을때
+	let arrangedNames2 = names.sorted { (a, b) -> Bool in
+	    a > b }
+	print(arrangedNames2)
+	
+	//Int, Double 타입을 필터링할 경우 filter 함수를 사용한다.
+	var prices = [1.50, 10.00, 4.99, 2.30, 8.2]
+	
+	let largePrices = prices.filter({price -> Bool in
+	    return price > 5
+	})
+	print(largePrices)
+	
+	//매핑을 활용한 클로져
+	let salePrices = prices.map { (price) -> Double in
+	    return price * 0.9
+	}
+	
+	//리듀스 함수를 이용하여 전체 숫자를 더하여보자.
+	let sum = prices.reduce(0, {result, price -> Double in
+	    return result + price
+	})
+	
+	print(sum)
+	
+	//각 가격별(key)로 몇개의 물건(value)을 보유하고 있는지를 나타내는 딕셔너리를 만들어보자
+	var stock = [1.50: 5, 10.00: 2, 4.99: 20, 2.30: 5, 8.2: 30]
+	//각 아이템별 전체 수량대비 현재 가지고 있는 수량에 대한 가격이 얼마나 되는지 알아보기 위해, reduce함수를 사용한다.
+	let stockSum = stock.reduce(0) { result, pair -> Double in
+	    return result + (pair.key * Double(pair.value))
+	
+	}
+	print(stockSum)
+	```
+
+5) Programming in Swift : Structure
+
+* 
 
 
 

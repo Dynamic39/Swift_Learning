@@ -1,10 +1,42 @@
-//Set이란? 유니크한 값을 가지는 형태로 중복되지 않은 형태로 가지고 있는 것을 말한다.
+//String
 
-var someSet:Set<Int> = [1, 2, 3, 1]
-print(someSet) // 중복되는 값을 없어지므로, [2, 3, 1] 만 프린트된다.
-print(someSet.contains(1)) // 값이 있으므로, true값이 반환된다.
-print(someSet.contains(99)) // 값이 없으므로 false 값이 반환된다.
-someSet.insert(5)
-print(someSet)
-someSet.remove(3)
+var name = "Sam Kyu"
+
+let message = "Hello, my name is \(name)"
+print(message)
+let message2 = name + "Kang"
+print(message2)
+let message3 = "Hello\nGoodbye"
+print(message3)
+
+let massage4 = """
+This
+is
+a
+long
+message
+"""
+print(massage4)
+
+//String 의 Character별로 나눌수 있다.
+for char in name {
+    print(char)
+}
+
+//String의 Character개수를 알수 있다.
+let strLen = name.count
+//let secondChar = name[1]  //컴파일 에러 발생, String의 경우, 인덱스를 바로 참조하는 것이 아닌 unicode형태로 제공된다.
+
+let cafeNormal = "café"
+let cafeCombining = "cafe\u{0301}"
+
+print(cafeNormal.count)
+print(cafeCombining.count)
+
+print(cafeNormal.unicodeScalars.count)
+print(cafeCombining.unicodeScalars.count)
+
+let firstIndex = cafeCombining.startIndex
+let firstChar = cafeCombining[firstIndex]
+
 
