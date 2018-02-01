@@ -682,8 +682,8 @@ Swift에서는 상위 세가지 개념들이 유기적인 관계를 가지며, �
 
 * [Class](https://github.com/Dynamic39/Swift_Learning/blob/master/01_Tutorials/class/classes-vs-structures.playground/Contents.swift)
 * [Class-practice](https://github.com/Dynamic39/Swift_Learning/blob/master/01_Tutorials/class/challenge-classes-vs-structures-starter.playground/Contents.swift)
-* [Class-inheritance]()
-* [Class-initializers]()
+* [Class-inheritance](https://github.com/Dynamic39/Swift_Learning/blob/master/01_Tutorials/class/inheritance-starter.playground/Contents.swift)
+* [Class-initializers](https://github.com/Dynamic39/Swift_Learning/blob/master/01_Tutorials/class/initializers-starter.playground/Contents.swift)
 * [Memory Management]()
 
 
