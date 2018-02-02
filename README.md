@@ -686,6 +686,33 @@ Swift에서는 상위 세가지 개념들이 유기적인 관계를 가지며, �
 * [Class-initializers](https://github.com/Dynamic39/Swift_Learning/blob/master/01_Tutorials/class/initializers-starter.playground/Contents.swift)
 * [Memory Management](https://github.com/Dynamic39/Swift_Learning/blob/master/01_Tutorials/class/memory-management-starter.playground/Contents.swift)
 
+###Part4 - TableView & MVC pattern
+
+1. TableView
+
+ 1) 학습할 내용
+	- Todo List App Design
+	- TableView 만들기
+	- TableView에 Cell만들기
+	- Protocol & Delegate
+	- TableView에 Rows 추가하기
+	- Cell에 액세서리 추가하기
+	- Delegate Method를 실행하기
+
+ 2) 실습 내용정리
+ 
+  * TableView에 대한 기본적인 내용<br>
+	:TableView의 경우, 컬럼이 없고, rows가 있다. 
+	 Cell이 재사용된다.
+	 
+
+	
+ 
+	 
+	
+
+
+
 
 
 
