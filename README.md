@@ -701,10 +701,15 @@ Swift에서는 상위 세가지 개념들이 유기적인 관계를 가지며, �
 
  2) 실습 내용정리
  
-  * TableView에 대한 기본적인 내용<br>
+	* TableView에 대한 기본적인 내용 <br>
 	:TableView의 경우, 컬럼이 없고, rows가 있다. 
 	 Cell이 재사용된다.
-	 
+
+	* MVC Pattern <br>
+	: Model - Data 가 집합되어 있는 장소(요리 : 레시피)<br>
+	  View - 사용된 Data들이 보여지는 곳(레이블, 버튼, 화면구성 등)<br>
+	  Controller - Data와 View가 적절하게 상호 작용 할 수 있도록, 제어해주는 곳(ViewController, TableviewController etc,,)<br>
+	
 
 	
  
