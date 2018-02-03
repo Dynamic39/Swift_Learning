@@ -701,7 +701,7 @@ Swift에서는 상위 세가지 개념들이 유기적인 관계를 가지며, �
 
  2) 실습 내용정리
  
- 	* 실습 내용 : Swift_Learning/01_Tutorials/02_Checklists/Checklists/
+ 	* 실습 정리자료(Git) : Swift_Learning/01_Tutorials/02_Checklists/Checklists/
  
 	* TableView에 대한 기본적인 내용 <br>
 	:TableView의 경우, 컬럼이 없고, rows가 있다. 
@@ -712,8 +712,12 @@ Swift에서는 상위 세가지 개념들이 유기적인 관계를 가지며, �
 	  View - 사용된 Data들이 보여지는 곳(레이블, 버튼, 화면구성 등)<br>
 	  Controller - Data와 View가 적절하게 상호 작용 할 수 있도록, 제어해주는 곳(ViewController, TableviewController etc,,)<br>
 	
+	* Code Refactoring<br>
+	: Code Refactoring 하기에 앞서 작성한 코드가 중복이 되어 있는지 확인한다.<br>
+	  메서드의 경우, 하나의 메서드에 과중한 역할이 들어가지 않도록 하고, 그럴 경우, 분할하여 준다.<br>
+	  Model 클래스 내의 데이터를 여러군데에서 사용할 경우, 클래스 내에서 메서드를 작성하여 다른곳에서도 접근이 용이하도록 만들어 준다.<br>
 
-	
+	* 
  
 	 
 	
