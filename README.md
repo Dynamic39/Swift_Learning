@@ -701,6 +701,8 @@ Swift에서는 상위 세가지 개념들이 유기적인 관계를 가지며, �
 
  2) 실습 내용정리
  
+ 	* 실습 내용 : Swift_Learning/01_Tutorials/02_Checklists/Checklists/
+ 
 	* TableView에 대한 기본적인 내용 <br>
 	:TableView의 경우, 컬럼이 없고, rows가 있다. 
 	 Cell이 재사용된다.

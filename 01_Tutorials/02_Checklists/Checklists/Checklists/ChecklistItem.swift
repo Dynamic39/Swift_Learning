@@ -16,4 +16,9 @@ class ChecklistItem{
     var text = ""
     var checked = false
     
+    //데이터 내에서 확인해주는 것이기 때문에, 클래스 안에서 관리하여 어디서든 사용할 수 있도록 만들어준다.
+    func toggleChecked() {
+        checked = !checked
+    }
+    
 }
