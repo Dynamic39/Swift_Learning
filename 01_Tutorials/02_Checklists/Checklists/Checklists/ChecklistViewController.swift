@@ -13,11 +13,43 @@ import UIKit
 class ChecklistViewController: UITableViewController{
     
     //배열을 만들어서 아이템이 유동적으로 움직일 수 있도록 하여준다.
-    var items = [ChecklistItem]()
+    var items: [ChecklistItem]
+    
+    //UI로 아이템을 추가하는 액션 메서드를 만들어 준다.
+    @IBAction func addItem(_ sender: Any) {
+        print("added item")
+
+        //실제로 추가 할때마다 새로운 row가 생성되는 코드를 만들어주자.
+        //마지막 열에 넣기 위해, 마지막 카운트가 몇인지 확인한다.
+        let newRowIndex = items.count
+        //새로운 인스턴스 생성
+        let item = ChecklistItem()
+        // item.text = "I am a new row"
+        
+        //랜덤 어레이를 가져와서 텍스트에 넣어주는 작업을 진행해보자
+        var titles = ["Empty todo item", "Generic todo", "First todo: fill me out", "I need somthig to do", "Much todo about nothing"]
+        //랜덤 넘버를 생성한다.
+        let randomNumber = arc4random_uniform(UInt32(titles.count))
+        let title = titles[Int(randomNumber)]
+        
+        item.checked = true
+        item.text = title
+        
+        //생성된 인스턴스를 items 배열에 저장한다.
+        items.append(item)
+        
+        //테이블 뷰에 넣기위한 코드를 작성한다.
+        let indexPath = IndexPath(row: newRowIndex, section: 0)
+        let indexPaths = [indexPath]
+        tableView.insertRows(at: indexPaths, with: .automatic)
+
+    }
     
     //간단한 클래스를 만들어서 데이터를 가져온다.
     //데이터를 저장하기 위하여, NS코더를 사용했지만, 사용법은 다시한번 다루도록 한다.
     required init?(coder aDecoder: NSCoder) {
+        
+        items = [ChecklistItem]()
         
         let row0Item = ChecklistItem()
         row0Item.text = "Walk the dog"
@@ -66,6 +98,10 @@ class ChecklistViewController: UITableViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //네비게이션 컨트롤러 타이틀을 라지 타입으로 변경하기(코드로)
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
         
     }
     

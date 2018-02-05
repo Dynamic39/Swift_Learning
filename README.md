@@ -717,7 +717,15 @@ Swift에서는 상위 세가지 개념들이 유기적인 관계를 가지며, �
 	  메서드의 경우, 하나의 메서드에 과중한 역할이 들어가지 않도록 하고, 그럴 경우, 분할하여 준다.<br>
 	  Model 클래스 내의 데이터를 여러군데에서 사용할 경우, 클래스 내에서 메서드를 작성하여 다른곳에서도 접근이 용이하도록 만들어 준다.<br>
 
-	* 
+2. TableView - Add and Delete Items
+
+ 1) 학습할 내용
+ 	- Navigation Controllers
+ 	- Adding New Items
+ 	- Swipe to delete
+ 	- Add a new screeen
+ 	- Static cells
+ 	- Text fields & the first responder
  
 	 
 	
