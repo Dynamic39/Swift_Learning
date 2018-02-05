@@ -18,9 +18,21 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
     func addItemViewControllerDidCancel(_ controller: AddItemTableViewController) {
         //딜리게이트에서 받은 부분을 어떻게 처리할 것인지 기재하여 준다.
         navigationController?.popViewController(animated: true)
+        print("delegate 실행 (1)!")
     }
     
     func addItemViewController(_ controller: AddItemTableViewController, didFinishAdding item: ChecklistItem) {
+        
+        print("delegate 실행 (2)!")
+        
+        //새로운 row가 생기면 추가로 생성이 되므로 카운트를 먼져 계산하여 준다.
+        let newRowIndex = items.count
+        items.append(item)
+        
+        let indexPath = IndexPath(row: newRowIndex, section: 0)
+        let indexPaths = [indexPath]
+        tableView.insertRows(at: indexPaths, with: .automatic)
+        
         navigationController?.popViewController(animated: true)
     }
     
@@ -109,12 +121,29 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
         super.init(coder: aDecoder)
     }
     
+    //데이터를 추가하는 곳과, 데이터를 수정하는 곳 두개를 한번에 만들 수 있다
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "AddItem" {
+            let controller = segue.destination as! AddItemTableViewController
+            controller.delegate = self
+            print("delegate 시작!")
+        } else if segue.identifier == "EditItem" {
+            let controller = segue.destination as! AddItemTableViewController
+            controller.delegate = self
+            //유저가 탭한 곳이 어느 값인지 확인해야 한다.
+            //sender를 indexPath로 변환하여 준다.
+            if let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
+                controller.itemToEdit = items[indexPath.row]
+            }
+        }
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //네비게이션 컨트롤러 타이틀을 라지 타입으로 변경하기(코드로)
         navigationController?.navigationBar.prefersLargeTitles = true
-        
         
     }
     
@@ -187,10 +216,13 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
     //코드 리팩토링을 위하여, 중복이 되어 있는 indexPath를 삭제하고, CheckilistItem을 사용한다.
     func configureCheckmark(for cell:UITableViewCell, with item: ChecklistItem ) {
         
+        //커스텀으로 만든 레이블을 지정하여 준다.
+        let label = cell.viewWithTag(1001) as! UILabel
+        
         if item.checked {
-            cell.accessoryType = .checkmark
+            label.text = "√"
         } else {
-            cell.accessoryType = .none
+            label.text = ""
         }
         
     }

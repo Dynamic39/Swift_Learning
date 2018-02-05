@@ -20,9 +20,12 @@ class AddItemTableViewController: UITableViewController, UITextFieldDelegate {
     
     //텍스트 필드를 등록한다.
     @IBOutlet weak var textField: UITextField!
-    
     @IBOutlet weak var cancelBarButton: UIBarButtonItem!
     @IBOutlet weak var doneBarButton: UIBarButtonItem!
+    
+    var itemToEdit: ChecklistItem?
+    
+
     
     //델리게이트 선언부, 옵셔널 타입으로 진행 하고, weak 형식으로 진행해서 강한 참조가 걸리지 않게 한다.
     weak var delegate: AddItemViewControllerDelegate?
@@ -33,6 +36,16 @@ class AddItemTableViewController: UITableViewController, UITextFieldDelegate {
         
         textField.delegate = self
         navigationItem.largeTitleDisplayMode = .never
+        
+        
+        //Edit시점에 불러올 리스트를 설정하여 준다.
+        if let item = itemToEdit {
+            title = "Edit Item" // 네비게이션 컨트롤러
+            textField.text = item.text // 수정시 보일 값
+            doneBarButton.isEnabled = true
+            
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
