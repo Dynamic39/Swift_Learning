@@ -49,7 +49,7 @@
                     <navigationItem key="navigationItem" title="Checklists" id="qw4-Yo-GNW">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="xCd-cN-XeF">
                             <connections>
-                                <action selector="addItem:" destination="a6V-Cf-o5W" id="5bC-cu-XNO"/>
+                                <segue destination="kwy-ed-Vty" kind="show" id="Hsv-8a-tCU"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -57,6 +57,73 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="POM-mY-sVi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="724" y="217.24137931034485"/>
+        </scene>
+        <!--Add Item-->
+        <scene sceneID="rgO-7h-12Q">
+            <objects>
+                <tableViewController id="kwy-ed-Vty" customClass="AddItemTableViewController" customModule="Checklists" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="09M-fc-Jm8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection id="8L7-cP-ESg">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="50" id="AkX-oF-5dy">
+                                        <rect key="frame" x="0.0" y="35" width="375" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AkX-oF-5dy" id="JHu-bc-VIe">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="otB-40-JR1">
+                                                    <rect key="frame" x="10" y="5" width="355" height="39.5"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
+                                                    <connections>
+                                                        <action selector="done" destination="kwy-ed-Vty" eventType="editingDidEndOnExit" id="vx0-9c-a4C"/>
+                                                    </connections>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="otB-40-JR1" firstAttribute="centerY" secondItem="JHu-bc-VIe" secondAttribute="centerY" id="4UO-9E-gxB"/>
+                                                <constraint firstAttribute="trailing" secondItem="otB-40-JR1" secondAttribute="trailing" constant="10" id="LlM-ID-MOY"/>
+                                                <constraint firstAttribute="bottom" secondItem="otB-40-JR1" secondAttribute="bottom" constant="5" id="VnU-e2-agB"/>
+                                                <constraint firstItem="otB-40-JR1" firstAttribute="leading" secondItem="JHu-bc-VIe" secondAttribute="leading" constant="10" id="bOO-1O-wHU"/>
+                                                <constraint firstItem="otB-40-JR1" firstAttribute="top" secondItem="JHu-bc-VIe" secondAttribute="top" constant="5" id="tLe-kF-fL3"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="kwy-ed-Vty" id="rXe-T2-RD3"/>
+                            <outlet property="delegate" destination="kwy-ed-Vty" id="Oig-8j-4I9"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Add Item" id="4zu-Cq-52l">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="7hH-7m-43d">
+                            <connections>
+                                <action selector="cencel" destination="kwy-ed-Vty" id="83W-YT-RGk"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="baa-ug-vN2">
+                            <connections>
+                                <action selector="done" destination="kwy-ed-Vty" id="fUQ-wQ-TkF"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="cancelBarButton" destination="7hH-7m-43d" id="t8p-wZ-amf"/>
+                        <outlet property="doneBarButton" destination="baa-ug-vN2" id="SA9-Sn-QiC"/>
+                        <outlet property="textField" destination="otB-40-JR1" id="iqA-UW-JG0"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1yu-rh-12o" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1580" y="216.34182908545728"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="KrW-ue-ABP">

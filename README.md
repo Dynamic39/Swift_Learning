@@ -726,6 +726,31 @@ Swift에서는 상위 세가지 개념들이 유기적인 관계를 가지며, �
  	- Add a new screeen
  	- Static cells
  	- Text fields & the first responder
+
+ 2) 실습 내용 정리
+ 
+ 	- 네비게이션 컨트롤러 기본조작
+ 	- 네비게이션 컨트롤러에 bar button Item 추가
+ 	- 액션 버튼 활성화 및 TableView에 row 추가
+ 	- row에 삭제액션 및 삭제 콛 진행
+ 	- UITextField Delegate 사용
+ 	- 키보드의 리턴(Done) 버튼을 눌렀을때, 키보드를 숨기는 역할을 하는 메서드 구현
+
+3. TableView - Editing Items
+
+ 1) 학습할 내용
+ 	- Delegate / Protocol
+ 	- Segues
+ 	- Detail Disclosure Indicator
+ 	- Pass data in segues
+ 	- NSObject
+ 	- Xcode refactoring tools
+
+  2) 실습 내용 정리
+  
+  	- ㅇ
+ 
+ 
  
 	 
 	

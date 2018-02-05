@@ -10,7 +10,20 @@ import UIKit
 
 //기본적인 ViewController를 TableView컨트롤러로 바꿀수 있다.
 //TableView의 경우, DataSource와, Delegate를 사용한다.
-class ChecklistViewController: UITableViewController{
+//새롭게 만든 딜리게이트를 선언하여 가지고 온다.
+class ChecklistViewController: UITableViewController, AddItemViewControllerDelegate {
+    
+    //AddItemViewControllerDelegate 안에 있는 메서드를 시행하여 사용하여 준다.
+    //딜리게이트에서 선언한 부분은 어떻게 실행할것인지 위임한 것이기 때문에, 컨트롤러 부분에서 해당 기능을 담당하여 준다.
+    func addItemViewControllerDidCancel(_ controller: AddItemTableViewController) {
+        //딜리게이트에서 받은 부분을 어떻게 처리할 것인지 기재하여 준다.
+        navigationController?.popViewController(animated: true)
+    }
+    
+    func addItemViewController(_ controller: AddItemTableViewController, didFinishAdding item: ChecklistItem) {
+        navigationController?.popViewController(animated: true)
+    }
+    
     
     //배열을 만들어서 아이템이 유동적으로 움직일 수 있도록 하여준다.
     var items: [ChecklistItem]
@@ -115,6 +128,24 @@ class ChecklistViewController: UITableViewController{
         //아이템의 숫자로 테이블뷰의 row값을 줄수 있다.
         return items.count
     }
+    
+    //테이블뷰에 있는 아이템을 삭제하는 메서드를 구현하여 보자.
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        //삭제해야할 row를 설정한다.
+        items.remove(at: indexPath.row)
+        
+        //재설정할 indexPath를 설정한다
+//        let indexPaths = [indexPath]
+//        tableView.deleteRows(at: indexPaths, with: .automatic)
+        
+        //데이터에 따라서 자동으로 업데이트되는 MVC패턴이므로, 자료 자체를 다시 리로드 해와도 된다.
+        tableView.reloadData()
+    
+        
+    }
+    
+    
     //셀이 선택되었을때, 작동하는 메서드
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //체크마크의 온/오프 기능을 넣는 코드를 구현한다.
