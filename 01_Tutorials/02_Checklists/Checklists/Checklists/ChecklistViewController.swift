@@ -11,17 +11,17 @@ import UIKit
 //기본적인 ViewController를 TableView컨트롤러로 바꿀수 있다.
 //TableView의 경우, DataSource와, Delegate를 사용한다.
 //새롭게 만든 딜리게이트를 선언하여 가지고 온다.
-class ChecklistViewController: UITableViewController, AddItemViewControllerDelegate {
+class ChecklistViewController: UITableViewController, ItemDetailViewControllerDelegate {
     
     //AddItemViewControllerDelegate 안에 있는 메서드를 시행하여 사용하여 준다.
     //딜리게이트에서 선언한 부분은 어떻게 실행할것인지 위임한 것이기 때문에, 컨트롤러 부분에서 해당 기능을 담당하여 준다.
-    func addItemViewControllerDidCancel(_ controller: AddItemTableViewController) {
+    func addItemViewControllerDidCancel(_ controller: ItemDetailViewController) {
         //딜리게이트에서 받은 부분을 어떻게 처리할 것인지 기재하여 준다.
         navigationController?.popViewController(animated: true)
         print("delegate 실행 (1)!")
     }
     
-    func addItemViewController(_ controller: AddItemTableViewController, didFinishAdding item: ChecklistItem) {
+    func addItemViewController(_ controller: ItemDetailViewController, didFinishAdding item: ChecklistItem) {
         
         print("delegate 실행 (2)!")
         
@@ -33,6 +33,18 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
         let indexPaths = [indexPath]
         tableView.insertRows(at: indexPaths, with: .automatic)
         
+        navigationController?.popViewController(animated: true)
+    }
+    
+    func addItemViewController(_ controller: ItemDetailViewController, didFinishEditing item: ChecklistItem) {
+        //테이블 셀을 업데이트 해준다.
+        //NSObject를 클래스로 넣어주고, 진행한다.
+        if let index = items.index(of: item) {
+            let indexPath = IndexPath(row: index, section: 0)
+            if let cell = tableView.cellForRow(at: indexPath) {
+                configureText(for: cell, with: item)
+            }
+        }
         navigationController?.popViewController(animated: true)
     }
     
@@ -124,11 +136,11 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
     //데이터를 추가하는 곳과, 데이터를 수정하는 곳 두개를 한번에 만들 수 있다
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "AddItem" {
-            let controller = segue.destination as! AddItemTableViewController
+            let controller = segue.destination as! ItemDetailViewController
             controller.delegate = self
             print("delegate 시작!")
         } else if segue.identifier == "EditItem" {
-            let controller = segue.destination as! AddItemTableViewController
+            let controller = segue.destination as! ItemDetailViewController
             controller.delegate = self
             //유저가 탭한 곳이 어느 값인지 확인해야 한다.
             //sender를 indexPath로 변환하여 준다.

@@ -9,14 +9,15 @@
 import UIKit
 
 //
-protocol AddItemViewControllerDelegate: class {
+protocol ItemDetailViewControllerDelegate: class {
     
-    func addItemViewControllerDidCancel(_ controller: AddItemTableViewController)
-    func addItemViewController(_ controller: AddItemTableViewController, didFinishAdding item: ChecklistItem)
+    func addItemViewControllerDidCancel(_ controller: ItemDetailViewController)
+    func addItemViewController(_ controller: ItemDetailViewController, didFinishAdding item: ChecklistItem)
+    func addItemViewController(_ controller: ItemDetailViewController, didFinishEditing item: ChecklistItem)
     
 }
 
-class AddItemTableViewController: UITableViewController, UITextFieldDelegate {
+class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
     
     //텍스트 필드를 등록한다.
     @IBOutlet weak var textField: UITextField!
@@ -28,7 +29,7 @@ class AddItemTableViewController: UITableViewController, UITextFieldDelegate {
 
     
     //델리게이트 선언부, 옵셔널 타입으로 진행 하고, weak 형식으로 진행해서 강한 참조가 걸리지 않게 한다.
-    weak var delegate: AddItemViewControllerDelegate?
+    weak var delegate: ItemDetailViewControllerDelegate?
     
     
     override func viewDidLoad() {
@@ -73,13 +74,16 @@ class AddItemTableViewController: UITableViewController, UITextFieldDelegate {
     
     @IBAction func done(){
         
-        //해당 메서드를 실행시키기 위해, 텍스트 필드의 키보드의 이벤트 액션을 해당 메서드와 연동을 하게 되면, 키보드가 내려가면서, 데이터가 저장, dismiss 되는 효과를 가져올 수 있다.
-        
-        let item = ChecklistItem()
-        item.text = textField.text!
-        item.checked = false
-        
-        delegate?.addItemViewController(self, didFinishAdding: item)
+        if let itemToEdit = itemToEdit {
+            itemToEdit.text = textField.text!
+            delegate?.addItemViewController(self, didFinishEditing: itemToEdit)
+        } else {
+            //해당 메서드를 실행시키기 위해, 텍스트 필드의 키보드의 이벤트 액션을 해당 메서드와 연동을 하게 되면, 키보드가 내려가면서, 데이터가 저장, dismiss 되는 효과를 가져올 수 있다.
+            let item = ChecklistItem()
+            item.text = textField.text!
+            item.checked = false
+            delegate?.addItemViewController(self, didFinishAdding: item)
+        }
 
     }
     

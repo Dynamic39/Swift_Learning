@@ -11,7 +11,7 @@ import Foundation
 //ViewController에 모여있는 데이터성 변수들을 현재 파일에 클래스로 만들어 관리한다.
 //Model
 
-class ChecklistItem{
+class ChecklistItem : NSObject{
     
     var text = ""
     var checked = false

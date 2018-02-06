@@ -750,6 +750,8 @@ Swift에서는 상위 세가지 개념들이 유기적인 관계를 가지며, �
   
   	- delegate / protocol 의 코드 구현(구현부 / 실행부)
   	- Segue활용을 통한 Add 기능 구현 및 Edit 기능 구현
+  	- Edit 후에 적용된 셀에 구현되도록 코드 수정(NSObject)
+  	- Code Refactoring
 
  
  
