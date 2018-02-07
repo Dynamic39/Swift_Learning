@@ -757,10 +757,15 @@ Swift에서는 상위 세가지 개념들이 유기적인 관계를 가지며, �
 1. Files and Data
 
  1) 학습할 내용
+ 
  	- [File Manager & URLs](https://github.com/Dynamic39/Swift_Learning/blob/master/01_Tutorials/Data%20Saving/Data%20Saving.playground/Contents.swift)
  	- [Image Data Load]()
- 	- Foundation Data
- 	- 
+ 
+ 2) 실습내용 정리
+ 
+ 	- Data를 FileManager를 통하여, path를 구성하고 data를 저장
+ 	- Bundle에 있는 data를 FileManager를 통하여 프로젝트 내, 새로운 폴더를 만들고 저장
+ 	- 이미지를 data로 변환하고, 해당 이미지를 가지는 path를 구성, data upload
 
  
  
