@@ -771,8 +771,8 @@ Swift에서는 상위 세가지 개념들이 유기적인 관계를 가지며, �
 
  1) 학습할 내용
  
- 	- [Codable]()
-	- [JSON]()
+ 	- [Codable](https://github.com/Dynamic39/Swift_Learning/tree/master/01_Tutorials/Data%20Saving)
+	- [JSON](https://github.com/Dynamic39/Swift_Learning/tree/master/01_Tutorials/Data%20Saving)
  	- Property List
 
 
