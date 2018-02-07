@@ -773,13 +773,22 @@ Swift에서는 상위 세가지 개념들이 유기적인 관계를 가지며, �
  
  	- [Codable](https://github.com/Dynamic39/Swift_Learning/tree/master/01_Tutorials/Data%20Saving)
 	- [JSON](https://github.com/Dynamic39/Swift_Learning/tree/master/01_Tutorials/Data%20Saving)
- 	- Property List
+ 	- [Property List]()
 
 
  2) 실습내용 정리
  
- 	- 작성중
+ 	- Codable의 사용법
+ 	- JSON data 생성 방법
+ 	- Property List 생성 방법
+ 	- JSON vs Plist 	비교
+ 	- Encode / Decode
  
+ 3) 지속 학습 예정
+ 
+ 	- Filemanager 사용법
+ 	- Codable을 적용한 DataModel
+ 	- JSON data를 이용한 FireBase 관리
  
 	 
 	
