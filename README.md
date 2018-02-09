@@ -801,7 +801,8 @@ Swift에서는 상위 세가지 개념들이 유기적인 관계를 가지며, �
  
  2) 실습내용 정리
  	- Xcode를 Interface를 활용한 auto-resizing
- 	- 
+ 	- Stack View를 사용하여, 프로퍼티를 하나 묶어서 오토 레이아웃 설정
+ 	- Stack View안에 또다른 Stack View를 사용하여 (Nesting StackView), 가로
  
 	 
 	
