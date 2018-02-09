@@ -789,6 +789,19 @@ Swift에서는 상위 세가지 개념들이 유기적인 관계를 가지며, �
  	- Filemanager 사용법
  	- Codable을 적용한 DataModel
  	- JSON data를 이용한 FireBase 관리
+
+
+### Part5 - AutoLayout
+
+ 1) 학습내용
+ 	- Autoresizing
+ 	- Stack View
+ 	- Nesting StackView
+ 
+ 
+ 2) 실습내용 정리
+ 	- Xcode를 Interface를 활용한 auto-resizing
+ 	- 
  
 	 
 	
