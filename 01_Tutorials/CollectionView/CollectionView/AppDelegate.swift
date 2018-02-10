@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  CollectionView
 //
-//  Created by Samuel K on 2017. 12. 1..
-//  Copyright © 2017년 Samuel K. All rights reserved.
+//  Created by Samuel K on 2018. 2. 10..
+//  Copyright © 2018년 Samuel K. All rights reserved.
 //
 
 import UIKit

@@ -2,151 +2,64 @@
 //  ViewController.swift
 //  CollectionView
 //
-//  Created by Samuel K on 2017. 12. 1..
-//  Copyright © 2017년 Samuel K. All rights reserved.
+//  Created by Samuel K on 2018. 2. 10..
+//  Copyright © 2018년 Samuel K. All rights reserved.
 //
 
 import UIKit
 
 class ViewController: UIViewController {
     
-    @IBOutlet private weak var deleteButton: UIBarButtonItem!
-    @IBOutlet private weak var addButton: UIBarButtonItem!
-    @IBOutlet private weak var collectionView: UICollectionView!
+    //컬렉션 뷰를 컨트롤 하기 위한, 프로퍼티를 설정한다.
+    @IBOutlet private weak var collectionView:UICollectionView!
     
-    
-    @IBAction func deleteSelected() {
-        if let selected = collectionView.indexPathsForSelectedItems {
-            let items = selected.map{$0.item}.sorted().reversed()
-            
-            for item in items {
-                collectionData.remove(at: item)
-            }
-            collectionView.deleteItems(at: selected)
-            navigationController?.isToolbarHidden = true
-        }
-        
-    }
-    
-    @IBAction func addItem() {
-        
-        collectionView.performBatchUpdates({
-            
-            for _ in 0..<2 {
-                let text = "\(collectionData.count + 1) 🐸"
-                collectionData.append(text)
-                let index = IndexPath(row: collectionData.count - 1 , section: 0)
-                collectionView.insertItems(at: [index])
-            }
-        }, completion: nil)
-        
-    }
-    
-    
-    
-    var collectionData = ["1 🐶", "2 🐱", "3 🐭", "4 🐹", "5 🐰", "6 🦊", "7 🐻", "8 🐼", "9 🐨", "10 🐯", "11 🦁", "12 🐮", "13 🐷"]
-    
-    @objc func refresh() {
-        addItem()
-        collectionView.refreshControl?.endRefreshing()
-    }
+    //컬렉션뷰에 들어갈 변수를 작성한다.
+    var collectionData = ["1 🐶","2 🐱", "3 🐭", "4 🐹", "5 🐰", "6 🦊", "7 🐻", "8 🐼", "9 🐨","10 🐯", "11 🦁", "12 🐮"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //아이템의 사이즈를 결정하기 위한 작업을 한다.
+        //아이템간의 spacing값이 있으므로 그 값을 제외한 값을 기준으로 계산해준다.
         let width = (view.frame.size.width - 20) / 3
+        //아이템의 사이즈를 설정하기 위하여, 플로우레이아웃으로 타입캐스팅 해준다.
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = CGSize(width: width, height: width)
         
         
-        let refresh = UIRefreshControl()
-        refresh.addTarget(self, action: #selector(self.refresh), for: UIControlEvents.valueChanged)
-        collectionView.refreshControl = refresh
-        
-        navigationItem.leftBarButtonItem = editButtonItem
-        
-        navigationController?.isToolbarHidden = true
         
         
-
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    // 스토리보드를 이용한 자동 세팅
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
-        if segue.identifier == "DetailViewController" {
-
-            if let dest = segue.destination as? DetailViewController,
-                let index = sender as? IndexPath {
-                dest.selection = collectionData[index.row]
-            }
-        }
-    }
-    
-    override func setEditing(_ editing: Bool, animated: Bool) {
-        super.setEditing(editing, animated: animated)
-        //navigationController?.isToolbarHidden = !editing
-        
-        addButton.isEnabled = !editing
-        deleteButton.isEnabled = editing
-        collectionView.allowsMultipleSelection = editing
-        
-        let indexes = collectionView.indexPathsForVisibleItems
-        for index in indexes {
-            let cell = collectionView.cellForItem(at: index) as! CollectionViewCell
-            cell.isEditing = editing
-        }
-        if !editing {
-            navigationController?.isToolbarHidden = true
-        }
-    }
 }
 
-extension ViewController : UICollectionViewDelegate, UICollectionViewDataSource {
+//컬렉션 뷰를 분류하기 위한 Extension을 설정한다.
+extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
+    //아이템 수를 설정하는 메서드
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        
-        let rows = collectionData.count
-        
-        return rows
-        
+        return collectionData.count
     }
     
+    //셀의 reuse를 위한 메서드
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath)
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as! CollectionViewCell
-        
-        cell.titleLabel.text = collectionData[indexPath.row]
-        cell.isEditing = isEditing
-        
+        //라벨에 텍스트를 보여지기 위한 작업을 한다.
+        if let label = cell.viewWithTag(100) as? UILabel {
+            label.text = collectionData[indexPath.row]
+        }
+
         return cell
-        
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if !isEditing {
-            performSegue(withIdentifier: "DetailViewController", sender: indexPath)
-        } else {
-            navigationController?.isToolbarHidden = false
-        }
-        
+        print("\(indexPath.row) 가 선택되었습니다")
     }
-    
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        if isEditing {
-            if let selected = collectionView.indexPathsForSelectedItems,
-                selected.count == 0 {
-                navigationController?.isToolbarHidden = true
-            }
-            
-        }
-    }
+
 }
 

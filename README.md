@@ -793,16 +793,56 @@ Swift에서는 상위 세가지 개념들이 유기적인 관계를 가지며, �
 
 ### Part5 - AutoLayout
 
- 1) 학습내용
- 	- Autoresizing
- 	- Stack View
- 	- Nesting StackView
+1. Autoresizing & StackView & Constraints
+
+ 1) 학습할 내용
  
+  	- Autoresizing
+  	- Stack View
+  	- Nesting StackView
+  	- Constraints
+  	- [참고링크](https://github.com/Dynamic39/Swift_Learning/tree/master/01_Tutorials/Autolayout)
  
  2) 실습내용 정리
+ 
  	- Xcode를 Interface를 활용한 auto-resizing
  	- Stack View를 사용하여, 프로퍼티를 하나 묶어서 오토 레이아웃 설정
- 	- Stack View안에 또다른 Stack View를 사용하여 (Nesting StackView), 가로
+ 	- Stack View안에 또다른 Stack View를 사용하여 (Nesting StackView), 가로/세로 대응이 가능하도록 조정한다.
+ 	- width / heigt 의 고정값을 주는 것을 피한다.
+ 	- StackView와 Constraints 를 같이 사용하여 진행한다.
+
+ 	
+### Part6 - Collection View
+
+1. The Basics
+ 
+ 1) 학습할 내용
+
+ 	- TableView VS CollectionView
+ 	- Data Model
+ 	- UICollection View Protocols
+ 	- Cell Sizing and Spacing
+ 	- Responding to Selection
+ 	- Custom Collection View Cells
+ 	- Add and Delete Cells
+
+ 2) 실습내용 정리
+ 
+ 	- TableView와 다른점<br>
+ 	  : Grid에 Row와 Colums 보여진다.<br>
+ 	    수평/수직 구성이 가능하다.<br>
+ 	    추가 초기화 과정이 필요하다.<br>
+ 	    좀더 커스터마이징이 가능하고, 유연하다.<br>
+ 	    레이아웃 오브젝트와 분리된 레이아웃을 사용한다.<br>
+ 	- d
+  
+
+### Part7
+### Part8  
+
+ 
+
+  	
  
 	 
 	
