@@ -7,29 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FC4BEE23202ECE5500B178E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4BEE22202ECE5500B178E8 /* AppDelegate.swift */; };
-		FC4BEE25202ECE5500B178E8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4BEE24202ECE5500B178E8 /* ViewController.swift */; };
-		FC4BEE28202ECE5500B178E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC4BEE26202ECE5500B178E8 /* Main.storyboard */; };
-		FC4BEE2A202ECE5500B178E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC4BEE29202ECE5500B178E8 /* Assets.xcassets */; };
-		FC4BEE2D202ECE5500B178E8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC4BEE2B202ECE5500B178E8 /* LaunchScreen.storyboard */; };
-		FC4BEE37202F392700B178E8 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4BEE36202F392700B178E8 /* DetailViewController.swift */; };
-		FC4BEE392031C78700B178E8 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4BEE382031C78700B178E8 /* CollectionViewCell.swift */; };
+		DD4643B41EF3869500E877E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4643B31EF3869500E877E9 /* AppDelegate.swift */; };
+		DD4643B61EF3869500E877E9 /* ChecklistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4643B51EF3869500E877E9 /* ChecklistViewController.swift */; };
+		DD4643B91EF3869500E877E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD4643B71EF3869500E877E9 /* Main.storyboard */; };
+		DD4643BB1EF3869500E877E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD4643BA1EF3869500E877E9 /* Assets.xcassets */; };
+		DD4643BE1EF3869500E877E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD4643BC1EF3869500E877E9 /* LaunchScreen.storyboard */; };
+		DD910D9F1EF5FFC90007D812 /* ChecklistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD910D9E1EF5FFC90007D812 /* ChecklistItem.swift */; };
+		DD910DA31EF64AFB0007D812 /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD910DA21EF64AFB0007D812 /* AddItemViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		FC4BEE1F202ECE5500B178E8 /* CollectionView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollectionView.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		FC4BEE22202ECE5500B178E8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FC4BEE24202ECE5500B178E8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		FC4BEE27202ECE5500B178E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		FC4BEE29202ECE5500B178E8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		FC4BEE2C202ECE5500B178E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		FC4BEE2E202ECE5500B178E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FC4BEE36202F392700B178E8 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		FC4BEE382031C78700B178E8 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		DD4643B01EF3869500E877E9 /* Checklists.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Checklists.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD4643B31EF3869500E877E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		DD4643B51EF3869500E877E9 /* ChecklistViewController.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = ChecklistViewController.swift; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; };
+		DD4643B81EF3869500E877E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		DD4643BA1EF3869500E877E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DD4643BD1EF3869500E877E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		DD4643BF1EF3869500E877E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DD910D9E1EF5FFC90007D812 /* ChecklistItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistItem.swift; sourceTree = "<group>"; };
+		DD910DA21EF64AFB0007D812 /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		FC4BEE1C202ECE5500B178E8 /* Frameworks */ = {
+		DD4643AD1EF3869500E877E9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -39,74 +39,76 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		FC4BEE16202ECE5500B178E8 = {
+		DD4643A71EF3869500E877E9 = {
 			isa = PBXGroup;
 			children = (
-				FC4BEE21202ECE5500B178E8 /* CollectionView */,
-				FC4BEE20202ECE5500B178E8 /* Products */,
+				DD4643B21EF3869500E877E9 /* Checklists */,
+				DD4643B11EF3869500E877E9 /* Products */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
+			usesTabs = 0;
 		};
-		FC4BEE20202ECE5500B178E8 /* Products */ = {
+		DD4643B11EF3869500E877E9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FC4BEE1F202ECE5500B178E8 /* CollectionView.app */,
+				DD4643B01EF3869500E877E9 /* Checklists.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		FC4BEE21202ECE5500B178E8 /* CollectionView */ = {
+		DD4643B21EF3869500E877E9 /* Checklists */ = {
 			isa = PBXGroup;
 			children = (
-				FC4BEE22202ECE5500B178E8 /* AppDelegate.swift */,
-				FC4BEE24202ECE5500B178E8 /* ViewController.swift */,
-				FC4BEE36202F392700B178E8 /* DetailViewController.swift */,
-				FC4BEE382031C78700B178E8 /* CollectionViewCell.swift */,
-				FC4BEE26202ECE5500B178E8 /* Main.storyboard */,
-				FC4BEE29202ECE5500B178E8 /* Assets.xcassets */,
-				FC4BEE2B202ECE5500B178E8 /* LaunchScreen.storyboard */,
-				FC4BEE2E202ECE5500B178E8 /* Info.plist */,
+				DD4643B31EF3869500E877E9 /* AppDelegate.swift */,
+				DD4643B51EF3869500E877E9 /* ChecklistViewController.swift */,
+				DD4643B71EF3869500E877E9 /* Main.storyboard */,
+				DD4643BA1EF3869500E877E9 /* Assets.xcassets */,
+				DD4643BC1EF3869500E877E9 /* LaunchScreen.storyboard */,
+				DD4643BF1EF3869500E877E9 /* Info.plist */,
+				DD910D9E1EF5FFC90007D812 /* ChecklistItem.swift */,
+				DD910DA21EF64AFB0007D812 /* AddItemViewController.swift */,
 			);
-			path = CollectionView;
+			path = Checklists;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FC4BEE1E202ECE5500B178E8 /* CollectionView */ = {
+		DD4643AF1EF3869500E877E9 /* Checklists */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FC4BEE31202ECE5500B178E8 /* Build configuration list for PBXNativeTarget "CollectionView" */;
+			buildConfigurationList = DD4643C21EF3869500E877E9 /* Build configuration list for PBXNativeTarget "Checklists" */;
 			buildPhases = (
-				FC4BEE1B202ECE5500B178E8 /* Sources */,
-				FC4BEE1C202ECE5500B178E8 /* Frameworks */,
-				FC4BEE1D202ECE5500B178E8 /* Resources */,
+				DD4643AC1EF3869500E877E9 /* Sources */,
+				DD4643AD1EF3869500E877E9 /* Frameworks */,
+				DD4643AE1EF3869500E877E9 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = CollectionView;
-			productName = CollectionView;
-			productReference = FC4BEE1F202ECE5500B178E8 /* CollectionView.app */;
+			name = Checklists;
+			productName = Checklists;
+			productReference = DD4643B01EF3869500E877E9 /* Checklists.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		FC4BEE17202ECE5500B178E8 /* Project object */ = {
+		DD4643A81EF3869500E877E9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
-				ORGANIZATIONNAME = "Samuel K";
+				LastSwiftUpdateCheck = 0900;
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = Razeware;
 				TargetAttributes = {
-					FC4BEE1E202ECE5500B178E8 = {
-						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
+					DD4643AF1EF3869500E877E9 = {
+						CreatedOnToolsVersion = 9.0;
 					};
 				};
 			};
-			buildConfigurationList = FC4BEE1A202ECE5500B178E8 /* Build configuration list for PBXProject "CollectionView" */;
+			buildConfigurationList = DD4643AB1EF3869500E877E9 /* Build configuration list for PBXProject "Checklists" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -114,56 +116,56 @@
 				en,
 				Base,
 			);
-			mainGroup = FC4BEE16202ECE5500B178E8;
-			productRefGroup = FC4BEE20202ECE5500B178E8 /* Products */;
+			mainGroup = DD4643A71EF3869500E877E9;
+			productRefGroup = DD4643B11EF3869500E877E9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FC4BEE1E202ECE5500B178E8 /* CollectionView */,
+				DD4643AF1EF3869500E877E9 /* Checklists */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		FC4BEE1D202ECE5500B178E8 /* Resources */ = {
+		DD4643AE1EF3869500E877E9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC4BEE2D202ECE5500B178E8 /* LaunchScreen.storyboard in Resources */,
-				FC4BEE2A202ECE5500B178E8 /* Assets.xcassets in Resources */,
-				FC4BEE28202ECE5500B178E8 /* Main.storyboard in Resources */,
+				DD4643BE1EF3869500E877E9 /* LaunchScreen.storyboard in Resources */,
+				DD4643BB1EF3869500E877E9 /* Assets.xcassets in Resources */,
+				DD4643B91EF3869500E877E9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		FC4BEE1B202ECE5500B178E8 /* Sources */ = {
+		DD4643AC1EF3869500E877E9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC4BEE37202F392700B178E8 /* DetailViewController.swift in Sources */,
-				FC4BEE25202ECE5500B178E8 /* ViewController.swift in Sources */,
-				FC4BEE392031C78700B178E8 /* CollectionViewCell.swift in Sources */,
-				FC4BEE23202ECE5500B178E8 /* AppDelegate.swift in Sources */,
+				DD4643B61EF3869500E877E9 /* ChecklistViewController.swift in Sources */,
+				DD910DA31EF64AFB0007D812 /* AddItemViewController.swift in Sources */,
+				DD910D9F1EF5FFC90007D812 /* ChecklistItem.swift in Sources */,
+				DD4643B41EF3869500E877E9 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		FC4BEE26202ECE5500B178E8 /* Main.storyboard */ = {
+		DD4643B71EF3869500E877E9 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				FC4BEE27202ECE5500B178E8 /* Base */,
+				DD4643B81EF3869500E877E9 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		FC4BEE2B202ECE5500B178E8 /* LaunchScreen.storyboard */ = {
+		DD4643BC1EF3869500E877E9 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				FC4BEE2C202ECE5500B178E8 /* Base */,
+				DD4643BD1EF3869500E877E9 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -171,7 +173,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		FC4BEE2F202ECE5500B178E8 /* Debug */ = {
+		DD4643C01EF3869500E877E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -191,8 +193,6 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
@@ -219,7 +219,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -228,7 +228,7 @@
 			};
 			name = Debug;
 		};
-		FC4BEE30202ECE5500B178E8 /* Release */ = {
+		DD4643C11EF3869500E877E9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -248,8 +248,6 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
@@ -270,7 +268,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -278,30 +276,28 @@
 			};
 			name = Release;
 		};
-		FC4BEE32202ECE5500B178E8 /* Debug */ = {
+		DD4643C31EF3869500E877E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = G4MM77V7NH;
-				INFOPLIST_FILE = CollectionView/Info.plist;
+				DEVELOPMENT_TEAM = QX3779KV49;
+				INFOPLIST_FILE = Checklists/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.SamuelK.CollectionView;
+				PRODUCT_BUNDLE_IDENTIFIER = com.razeware.Checklists;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		FC4BEE33202ECE5500B178E8 /* Release */ = {
+		DD4643C41EF3869500E877E9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = G4MM77V7NH;
-				INFOPLIST_FILE = CollectionView/Info.plist;
+				DEVELOPMENT_TEAM = QX3779KV49;
+				INFOPLIST_FILE = Checklists/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.SamuelK.CollectionView;
+				PRODUCT_BUNDLE_IDENTIFIER = com.razeware.Checklists;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -311,25 +307,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FC4BEE1A202ECE5500B178E8 /* Build configuration list for PBXProject "CollectionView" */ = {
+		DD4643AB1EF3869500E877E9 /* Build configuration list for PBXProject "Checklists" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FC4BEE2F202ECE5500B178E8 /* Debug */,
-				FC4BEE30202ECE5500B178E8 /* Release */,
+				DD4643C01EF3869500E877E9 /* Debug */,
+				DD4643C11EF3869500E877E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FC4BEE31202ECE5500B178E8 /* Build configuration list for PBXNativeTarget "CollectionView" */ = {
+		DD4643C21EF3869500E877E9 /* Build configuration list for PBXNativeTarget "Checklists" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FC4BEE32202ECE5500B178E8 /* Debug */,
-				FC4BEE33202ECE5500B178E8 /* Release */,
+				DD4643C31EF3869500E877E9 /* Debug */,
+				DD4643C41EF3869500E877E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = FC4BEE17202ECE5500B178E8 /* Project object */;
+	rootObject = DD4643A81EF3869500E877E9 /* Project object */;
 }

@@ -834,7 +834,9 @@ Swift에서는 상위 세가지 개념들이 유기적인 관계를 가지며, �
  	    추가 초기화 과정이 필요하다.<br>
  	    좀더 커스터마이징이 가능하고, 유연하다.<br>
  	    레이아웃 오브젝트와 분리된 레이아웃을 사용한다.<br>
- 	- d
+ 	- CollectionView의 기본 프로토콜 및 데이터 pass
+ 	- Prepare for segue 활용(identifier)
+ 	- dd
   
 
 ### Part7
