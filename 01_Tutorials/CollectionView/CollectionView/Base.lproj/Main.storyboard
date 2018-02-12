@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="OlU-oV-jdB">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Yrh-Fs-dIu">
                                     <size key="itemSize" width="200" height="200"/>
@@ -78,6 +78,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem enabled="NO" systemItem="trash" id="Cga-pk-IQa">
+                            <connections>
+                                <action selector="deleteSelected" destination="BYZ-38-t0r" id="Pie-S7-L78"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" id="7nY-h8-inB">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="AbZ-Fh-Njr">
                             <connections>
@@ -85,9 +92,11 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="addButton" destination="AbZ-Fh-Njr" id="9CW-jN-fpp"/>
                         <outlet property="collectionView" destination="OlU-oV-jdB" id="H5b-j4-MA2"/>
+                        <outlet property="deleteButton" destination="Cga-pk-IQa" id="M24-A7-syc"/>
                         <segue destination="0t9-gf-D0o" kind="show" identifier="DetailSegue" id="s86-Zi-eUj"/>
                     </connections>
                 </viewController>
@@ -128,13 +137,17 @@
         <!--Navigation Controller-->
         <scene sceneID="ZuC-dW-x9Q">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mve-7G-I7L" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="mve-7G-I7L" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="SRP-1u-FJv">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="eCk-NX-9M8">
+                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="GCA-NX-hOl"/>
                     </connections>

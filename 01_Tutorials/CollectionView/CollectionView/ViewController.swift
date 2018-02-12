@@ -16,9 +16,23 @@ class ViewController: UIViewController {
     @IBOutlet private weak var collectionView:UICollectionView!
     //추가 버튼 생성
     @IBOutlet private weak var addButton:UIBarButtonItem!
+    @IBOutlet private weak var deleteButton:UIBarButtonItem!
     
     //컬렉션뷰에 들어갈 변수를 작성한다.
     var collectionData = ["1 🐶","2 🐱", "3 🐭", "4 🐹", "5 🐰", "6 🦊", "7 🐻", "8 🐼", "9 🐨","10 🐯", "11 🦁", "12 🐮"]
+    
+    @IBAction func deleteSelected() {
+        //선택된 아이템을 값을 가지는 프로퍼티를 생성한다.
+        if let selected = collectionView.indexPathsForSelectedItems {
+            //셀렉된 아이템을 역순으로 맵핑하여 준다.
+            let items = selected.map {$0.item}.sorted().reversed()
+            for item in items  {
+                collectionData.remove(at: item)
+            }
+            collectionView.deleteItems(at: selected)
+            navigationController?.isToolbarHidden = true
+        }
+    }
     
     //객체 하나를 추가하는 메서드를 만들어 준다.
     @IBAction func addItem() {
@@ -61,6 +75,7 @@ class ViewController: UIViewController {
         
         //아이템을 지우는 코드를 작성하여 보자
         navigationItem.leftBarButtonItem = editButtonItem
+        navigationController?.isToolbarHidden = true
         
     }
 
@@ -86,8 +101,10 @@ class ViewController: UIViewController {
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         
+        navigationController?.isToolbarHidden = !isEditing
         //수정모드일때는 addButton이 작동되지 않도록 한다.
         addButton.isEnabled = !editing
+        deleteButton.isEnabled = editing
         collectionView.allowsMultipleSelection = editing
         let indexes = collectionView.indexPathsForVisibleItems
         for index in indexes {
@@ -123,8 +140,19 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         
         if !isEditing {
         performSegue(withIdentifier: "DetailSegue", sender: indexPath)
+        } else {
+            navigationController?.isToolbarHidden = false
         }
-        
+    }
+    
+    //툴바가 자료가 삭제되면 바로 실행이 될 수 있도록 진행한다.
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        if isEditing {
+            if let selected = collectionView.indexPathsForSelectedItems,
+                selected.count == 0 {
+                navigationController?.isToolbarHidden = true
+            }
+        }
     }
 
 }
