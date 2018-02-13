@@ -30,25 +30,125 @@
 
 import UIKit
 
+//Data를 가지는 DataModel을 만들어보자.
+//Plist에서 데이터를 가져오는 메서드를 만들어보자.
+
+class DataSource2 {
+    
+    //parkData를 가지고 오는 배열 변수를 선언한다.
+    private var parks = [Park]()
+    
+    //parkData를 가지고 사용할 변환이 가능한 배열 변수를 선언한다.
+    private var immutableParks = [Park]()
+
+    //collectionView의 섹션이름을 가져올를 변수를 만든다.
+    private var sections = [String]()
+
+    //item수를 정하는 변수를 만든다(computed-property)
+    private var count: Int {
+        return parks.count
+    }
+    
+    //section수를 정하는 변수를 만든다(computed-property)
+    private var numberOfSections:Int {
+        return sections.count
+    }
+    
+    // MARK:- Public
+    // 초기화를 진행한다.
+
+    init() {
+        //parks = loadParksFromDisk()
+        //immutableParks = parks
+    }
+    
+    // MARK:- Private
+    // Plist에서 Data를 가져온 후, parkData 에 입력 후, 초기화한 각 데이터들을 집어넣어 준다.
+    private func loadParksFromDisk() -> [Park] {
+        //Plist에서 데이터를 가져온다.
+        if let path = Bundle.main.path(forResource: "NationalParks", ofType: "plist") {
+            //NSArray를 사용하여, 데이터를 가지오 온다. Plist -> NSArray형태로 변환이 된다.
+            if let dicArray = NSArray(contentsOfFile: path) {
+                //plist를 받을 새로운 변수를 설정하낟.
+                var nationalParks:[Park] = []
+                //for 문을 실행하여 하나씩 배열을 풀어줌과 동시에 데이터를 입력하여 준다.
+                for item in dicArray {
+                    if let dict = item as? NSDictionary {
+                        let name = dict["name"] as! String
+                        let state = dict["name"] as! String
+                        let date = dict["name"] as! String
+                        let photo = dict["name"] as! String
+                        let index = dict["name"] as! Int
+                        let park = Park(name: name, state: state, date: date, photo: photo, index: index)
+                        
+                        nationalParks.append(park)
+                    }
+                    
+                }
+                return nationalParks
+            }
+        }
+        return []
+    }
+    
+}
+
+
+
 class DataSource {
+    
+    //parkData를 가지고 오는 배열 변수를 선언한다.
 	private var parks = [Park]()
+    //parkData를 가지고 사용할 변환이 가능한 배열 변수를 선언한다.
 	private var immutableParks = [Park]()
+    //collectionView의 섹션수를 설정한 변수를 만든다.
 	private var sections = [String]()
 	
+    //item수를 정하는 변수를 만든다(computed-property)
 	var count: Int {
 		return parks.count
 	}
 	
+    //section수를 정하는 변수를 만든다(computed-property)
 	var numberOfSections: Int {
 		return sections.count
 	}
 	
 	// MARK:- Public
+    // 초기화를 진행한다.
 	init() {
 		parks = loadParksFromDisk()
 		immutableParks = parks
 	}
+    
+    // MARK:- Private
+    // Plist에서 Data를 가져온 후, parkData 에 입력 후, 초기화한 각 데이터들을 집어넣어 준다.
+    private func loadParksFromDisk() -> [Park] {
+        sections.removeAll(keepingCapacity: false)
+        if let path = Bundle.main.path(forResource: "NationalParks", ofType: "plist") {
+            if let dictArray = NSArray(contentsOfFile: path) {
+                var nationalParks: [Park] = []
+                for item in dictArray {
+                    if let dict = item as? NSDictionary {
+                        let name = dict["name"] as! String
+                        let state = dict["state"] as! String
+                        let date = dict["date"] as! String
+                        let photo = dict["photo"] as! String
+                        let index = dict["index"] as! Int
+                        let park = Park(name: name, state: state, date: date, photo: photo, index: index)
+                        if !sections.contains(state) {
+                            sections.append(state)
+                        }
+                        nationalParks.append(park)
+                    }
+                }
+                return nationalParks
+            }
+        }
+        return []
+    }
 	
+    //---------------- 여기까지 작성 ------------------//
 	func deleteItemsAtIndexPaths(_ indexPaths: [IndexPath]) {
 		var indexes = [Int]()
 		for indexPath in indexPaths {
@@ -87,6 +187,7 @@ class DataSource {
 		let index = Int(arc4random_uniform(UInt32(immutableParks.count)))
 		let parkToCopy = immutableParks[index]
 		let newPark = Park(copying: parkToCopy)
+        
 		parks.append(newPark)
 		parks.sort { $0.index < $1.index }
 		return indexPathForPark(newPark)
@@ -124,34 +225,7 @@ class DataSource {
 		}
 		return nil
 	}
-	
-	
-	// MARK:- Private
-	private func loadParksFromDisk() -> [Park] {
-		sections.removeAll(keepingCapacity: false)
-		if let path = Bundle.main.path(forResource: "NationalParks", ofType: "plist") {
-			if let dictArray = NSArray(contentsOfFile: path) {
-				var nationalParks: [Park] = []
-				for item in dictArray {
-					if let dict = item as? NSDictionary {
-						let name = dict["name"] as! String
-						let state = dict["state"] as! String
-						let date = dict["date"] as! String
-						let photo = dict["photo"] as! String
-						let index = dict["index"] as! Int
-						let park = Park(name: name, state: state, date: date, photo: photo, index: index)
-						if !sections.contains(state) {
-							sections.append(state)
-						}
-						nationalParks.append(park)
-					}
-				}
-				return nationalParks
-			}
-		}
-		return []
-	}
-	
+    
 	private func absoluteIndexForIndexPath(_ indexPath: IndexPath) -> Int {
 		var index = 0
 		for i in 0..<indexPath.section {

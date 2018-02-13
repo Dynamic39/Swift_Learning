@@ -849,9 +849,10 @@ Swift에서는 상위 세가지 개념들이 유기적인 관계를 가지며, �
  	- Data Model
 
  2) 실습내용
+ 
  	- Custom CollectionView
- 	- DataModel분석 및 재작성, 주석 처리
- 	- 모르는 문법에 대한 재학습(convenience init)
+ 	- DataModel분석 및 재작성, 주석 처리(작성 중..)
+ 	- 모르는 문법에 대한 재학습(convenience init)[참고링크](http://minsone.github.io/mac/ios/swift-initialization-summary)
  
 
   
