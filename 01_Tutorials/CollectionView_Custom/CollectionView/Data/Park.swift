@@ -30,18 +30,13 @@
 
 import UIKit
 
-//데이터를 사용하기 위한 기초 모델링을 진행한다.
-
 class Park {
-    
-    // 필요한 데이터를 입력하기 위한 프로퍼티를 입력한다.
 	var name: String
 	var state: String
 	var date: String
 	var photo: String
 	var index: Int
 	
-    //초기화 메서드를 구현하여,
 	init(name: String, state: String, date: String, photo: String, index: Int) {
 		self.name = name
 		self.state = state
@@ -50,11 +45,24 @@ class Park {
 		self.index = index
 	}
 	
-    
 	convenience init(copying park: Park) {
 		self.init(name: park.name, state: park.state, date: park.date, photo: park.photo, index: park.index)
 	}
+    
+    
 }
+
+
+//Park의 클래스를 생성할 것
+//name, state, date, photo, index 를 프로퍼티로 설정할것,(index 는 Int 나머지는 String)
+//초기화 값은 각각의 이름을 가지는 것으로 설정할것.
+//convenience init은 자신의 클래스를 가지는 파라미터를 설정하여 진행하여 줄것.
+//convenience init에 대한 추가 설명을 확인하여, 주석 처리 할것.
+
+
+
+
+
 
 
 

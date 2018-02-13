@@ -152,7 +152,6 @@ class DataSource {
 		return []
 	}
 	
-    
 	private func absoluteIndexForIndexPath(_ indexPath: IndexPath) -> Int {
 		var index = 0
 		for i in 0..<indexPath.section {

@@ -22,13 +22,8 @@
 
 import UIKit
 
-//그라데이션을 세팅하는 CustomView를 만듭니다.
-
 class GradientView: UIView {
   
-    // 해당 View가 처음으로 불려 올때, 진행되기 때문에 Lazy를 붙여, 인스턴스 생성을 지연
-    // UI가 구성될때 한번에 인스턴스가 생성되도록 초기화를 시켜준다.
-    
   lazy fileprivate var gradientLayer: CAGradientLayer = {
     let layer = CAGradientLayer()
     layer.colors = [UIColor.clear.cgColor, UIColor(white: 0.0, alpha: 0.75).cgColor]
@@ -38,16 +33,12 @@ class GradientView: UIView {
   
   override func awakeFromNib() {
     super.awakeFromNib()
-    
-    //해당 View가 실행될때 색상 및 그라데이션 효과를 넣어준다.
     backgroundColor = UIColor.clear
     layer.addSublayer(gradientLayer)
   }
   
   override func layoutSubviews() {
 		super.layoutSubviews()
-    
-    //그라데이션 효과의 애니메이션 효과를 진행하기 위한 메서드를 실행한다.
 		CATransaction.begin()
 		CATransaction.setDisableActions(true)
 		gradientLayer.frame = bounds

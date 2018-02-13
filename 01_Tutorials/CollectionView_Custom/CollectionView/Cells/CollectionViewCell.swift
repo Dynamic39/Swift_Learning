@@ -31,20 +31,20 @@
 import UIKit
 
 class CollectionViewCell: UICollectionViewCell {
-    
-    @IBOutlet private weak var titleImg:UIImageView!
+	@IBOutlet private weak var titleLabel:UILabel!
 	@IBOutlet private weak var selectionImage:UIImageView!
-    @IBOutlet private weak var titleLB:UILabel!
     
+    @IBOutlet private weak var mainImage: UIImageView!
+    
+    //park 클래스를 호출하여, 해당 변수에 데이터를 가질 수 있도록 설정하여 준다.
     var park: Park? {
         didSet {
             if let park = park {
-                titleImg.image = UIImage(named: park.photo)
-                titleLB.text = park.name
+                mainImage.image = UIImage(named: park.photo)
             }
         }
     }
-	
+    
 	var isEditing: Bool = false {
 		didSet {
 			selectionImage.isHidden = !isEditing
@@ -60,9 +60,6 @@ class CollectionViewCell: UICollectionViewCell {
 	}
     
     override func prepareForReuse() {
-        titleImg.image = nil
+        mainImage.image = nil
     }
-    
-    
-    
 }
