@@ -75,10 +75,10 @@ class DataSource2 {
                 for item in dicArray {
                     if let dict = item as? NSDictionary {
                         let name = dict["name"] as! String
-                        let state = dict["name"] as! String
-                        let date = dict["name"] as! String
-                        let photo = dict["name"] as! String
-                        let index = dict["name"] as! Int
+                        let state = dict["state"] as! String
+                        let date = dict["date"] as! String
+                        let photo = dict["photo"] as! String
+                        let index = dict["index"] as! Int
                         let park = Park(name: name, state: state, date: date, photo: photo, index: index)
                         
                         nationalParks.append(park)
@@ -91,38 +91,61 @@ class DataSource2 {
         return []
     }
     
+    //하나더
+    private func loadParksFromDisk2() -> [Park] {
+        
+        if let path = Bundle.main.path(forResource: "NationalParks", ofType: "plist") {
+            if let dicArray = NSArray(contentsOfFile: path) {
+                var nationalParks:[Park] = []
+                
+                for item in dicArray {
+                    if let dict = item as? NSDictionary {
+                        let name = dict["name"] as! String
+                        let state = dict["state"] as! String
+                        let date = dict["date"] as! String
+                        let photo = dict["photo"] as! String
+                        let index = dict["index"] as! Int
+                        
+                        let park = Park(name: name, state: state, date: date, photo: photo, index: index)
+                        
+                        nationalParks.append(park)
+                    }
+                }
+                return nationalParks
+            }
+        }
+        
+        return []
+    }
+    
 }
 
 
 
 class DataSource {
     
-    //parkData를 가지고 오는 배열 변수를 선언한다.
 	private var parks = [Park]()
-    //parkData를 가지고 사용할 변환이 가능한 배열 변수를 선언한다.
 	private var immutableParks = [Park]()
-    //collectionView의 섹션수를 설정한 변수를 만든다.
+
 	private var sections = [String]()
 	
-    //item수를 정하는 변수를 만든다(computed-property)
+
 	var count: Int {
 		return parks.count
 	}
 	
-    //section수를 정하는 변수를 만든다(computed-property)
 	var numberOfSections: Int {
 		return sections.count
+        print("확인중", sections.count)
 	}
 	
 	// MARK:- Public
-    // 초기화를 진행한다.
 	init() {
 		parks = loadParksFromDisk()
 		immutableParks = parks
 	}
     
     // MARK:- Private
-    // Plist에서 Data를 가져온 후, parkData 에 입력 후, 초기화한 각 데이터들을 집어넣어 준다.
     private func loadParksFromDisk() -> [Park] {
         sections.removeAll(keepingCapacity: false)
         if let path = Bundle.main.path(forResource: "NationalParks", ofType: "plist") {
@@ -214,6 +237,7 @@ class DataSource {
 		if indexPath.section > 0 {
 			let nationalParks = parksForSection(indexPath.section)
 			return nationalParks[indexPath.item]
+            
 		} else {
 			return parks[indexPath.item]
 		}

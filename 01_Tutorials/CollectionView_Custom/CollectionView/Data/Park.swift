@@ -44,7 +44,7 @@ class Park {
     init(name: String, state: String, date: String, photo:String, index: Int) {
         
         self.name = name
-        self.state = name
+        self.state = state
         self.date = date
         self.photo = photo
         self.index = index
@@ -55,7 +55,7 @@ class Park {
     //convenience init에 대한 추가 설명을 확인하여, 주석 처리 할것.
     //이미 가지고 있는 데이터를 추가로 생성하지 않고, 그대로 가져오기 위하여, 편의 초기화를 진행한다.
     //이로인해, 기존의 변수값을 한번더 가져오는 것이 아닌, 이미 만들어진 DataModel에서 그 값을 가져와서 초기화를 진행할 수 있다.
-
+    
     convenience init(copying park: Park) {
         //convenience init 후엔, Default init도 같이 실행하여 주어서 초기화가 정상적으로 처리 될 수 있도록 지원한다.
         self.init(name: park.name, state: park.state, date: park.date, photo: park.photo, index: park.index)

@@ -42,6 +42,10 @@ class MainViewController: UICollectionViewController {
 		let width = view.frame.size.width / 3
 		let layout = collectionView?.collectionViewLayout as! UICollectionViewFlowLayout
 		layout.itemSize = CGSize(width:width, height:width)
+        
+        //각 타이틀의 차례일때 핀을 설정해주어, 고정이 될 수 있도록 해준다.
+        layout.sectionHeadersPinToVisibleBounds = true
+        
 		// Refresh control
 		let refresh = UIRefreshControl()
 		refresh.addTarget(self, action: #selector(self.refresh), for: UIControlEvents.valueChanged)
@@ -50,6 +54,8 @@ class MainViewController: UICollectionViewController {
 		navigationController?.isToolbarHidden = true
 		// Edit
 		navigationItem.leftBarButtonItem = editButtonItem
+        
+        
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -82,7 +88,8 @@ class MainViewController: UICollectionViewController {
 	}
 	
 	@IBAction func addItem() {
-		let index = dataSource.newRandomPark()
+        //새로운 아이템을 하나씩 추가해주는 역할을 한다.
+		let index = dataSource.indexPathForNewRandomPark()
 		collectionView?.insertItems(at: [index])
 	}
 	
@@ -101,16 +108,43 @@ class MainViewController: UICollectionViewController {
 }
 
 extension MainViewController {
+    
+    //헤더부문 커스텀
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        //View를 지정해줘서, 헤더부분에서 컨트롤이 가능하도록 만들어준다.
+        //해당 뷰가 실행되면서 아웃렛이나 프로퍼티가 동작을 하게된다.
+        let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SectionHeader", for: indexPath) as! SectionHeader
+        
+        //섹션부문의 데이터를 불러와 인스턴스를 만들어준다.
+        let section = Section()
+        //각각의 섹션별로 입력되는 데이터를 받아온다.
+        section.title = dataSource.titleForSectionAtIndexPath(indexPath)
+        section.count = dataSource.numberOfParksInSection(indexPath.section)
+        
+        //해당 섹션의 정보를 view안에 있는 섹션 정보에 넣어준다.
+        view.section = section
+        
+        return view
+    }
+    
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return dataSource.numberOfSections
+        
+    }
+    
 	override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return dataSource.count
+        
+		return dataSource.numberOfParksInSection(section)
+        
 	}
 	
 	override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as! CollectionViewCell
-		if let park = dataSource.parkForItemAtIndexPath(indexPath) {
+        
             cell.park = dataSource.parkForItemAtIndexPath(indexPath)
 			cell.isEditing = isEditing
-		}
+        
 		return cell
 	}
 	
