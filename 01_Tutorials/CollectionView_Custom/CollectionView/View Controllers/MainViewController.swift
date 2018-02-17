@@ -96,7 +96,14 @@ class MainViewController: UICollectionViewController {
         let layout = collectionView?.collectionViewLayout as! FlowLayout
         layout.addedItem = index
         
-		collectionView?.insertItems(at: [index])
+		//collectionView?.insertItems(at: [index])
+        //애니매이션 효과 주기
+        UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.65, initialSpringVelocity: 0.0, options: [], animations: {
+            self.collectionView?.insertItems(at: [index])
+        }) { (finished) in
+            //끝나면 하는 작업 추가.
+            layout.addedItem = nil
+        }
 	}
 	
 	@objc func refresh() {
@@ -106,6 +113,9 @@ class MainViewController: UICollectionViewController {
 	
 	@IBAction func deleteSelected() {
 		if let selected = collectionView?.indexPathsForSelectedItems {
+            
+            let layout = collectionView?.collectionViewLayout as! FlowLayout
+            layout.deletedItems = selected
 			dataSource.deleteItemsAtIndexPaths(selected)
 			collectionView?.deleteItems(at: selected)
 			navigationController?.isToolbarHidden = true

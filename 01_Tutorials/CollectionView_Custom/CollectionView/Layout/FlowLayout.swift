@@ -12,6 +12,7 @@ class FlowLayout: UICollectionViewFlowLayout {
     
     //아이템 추가
     var addedItem: IndexPath?
+    var deletedItems: [IndexPath]?
 
 //    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
 //        var result = [UICollectionViewLayoutAttributes]()
@@ -30,7 +31,21 @@ class FlowLayout: UICollectionViewFlowLayout {
 //        return result
 //    }j
     
+    //아이템 삭제
+    override func finalLayoutAttributesForDisappearingItem(at itemIndexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        guard let attributes = super.finalLayoutAttributesForDisappearingItem(at: itemIndexPath),
+        let deleted = deletedItems,
+            deleted.contains(itemIndexPath) else {
+                return nil
+        }
+        attributes.alpha = 1.0
+        attributes.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+        attributes.zIndex = -1
+        
+        return attributes
+    }
     
+    //아이템 추가
     override func initialLayoutAttributesForAppearingItem(at itemIndexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         guard let attributes = super.initialLayoutAttributesForAppearingItem(at: itemIndexPath),
         let added = addedItem,
