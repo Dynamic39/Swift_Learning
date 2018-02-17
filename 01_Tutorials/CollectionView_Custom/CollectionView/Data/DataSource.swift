@@ -208,12 +208,18 @@ class DataSource {
 	
 	func indexPathForNewRandomPark() -> IndexPath {
 		let index = Int(arc4random_uniform(UInt32(immutableParks.count)))
+        print(index)
 		let parkToCopy = immutableParks[index]
 		let newPark = Park(copying: parkToCopy)
         
+        //새롭게 복사한 인덱스를 가장 끝에 포함시켜준다.
 		parks.append(newPark)
+        //parks를 새로 정렬한다. 그래야 바로 뒤에 올 수 있기 때문,
 		parks.sort { $0.index < $1.index }
+        
+        
 		return indexPathForPark(newPark)
+        
 	}
 	
 	func indexPathForPark(_ park: Park) -> IndexPath {
@@ -222,10 +228,12 @@ class DataSource {
 		for (index, currentPark) in parksForSection(section).enumerated() {
 			if currentPark === park {
 				item = index
+                print("테스트", currentPark, item)
 				break
 			}
 		}
 		return IndexPath(item: item, section: section)
+        
 	}
 	
 	func numberOfParksInSection(_ index: Int) -> Int {

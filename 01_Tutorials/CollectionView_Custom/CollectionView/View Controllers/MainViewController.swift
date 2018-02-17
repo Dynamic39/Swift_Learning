@@ -90,6 +90,12 @@ class MainViewController: UICollectionViewController {
 	@IBAction func addItem() {
         //새로운 아이템을 하나씩 추가해주는 역할을 한다.
 		let index = dataSource.indexPathForNewRandomPark()
+        
+        //플로우 레이아웃에 대한 커스텀 작업을 진행하여 준다.
+        //애니메이션 효과를 가지면서 플러스 효과가 된다.
+        let layout = collectionView?.collectionViewLayout as! FlowLayout
+        layout.addedItem = index
+        
 		collectionView?.insertItems(at: [index])
 	}
 	
