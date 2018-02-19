@@ -55,6 +55,9 @@ class MainViewController: UICollectionViewController {
 		// Edit
 		navigationItem.leftBarButtonItem = editButtonItem
         
+        //컬렉션 뷰 셀이동이 가능하게 한다.
+        installsStandardGestureForInteractiveMovement = true
+        
         
 	}
 
@@ -124,6 +127,13 @@ class MainViewController: UICollectionViewController {
 }
 
 extension MainViewController {
+    
+    //아이템이 움직일 수 있도록 메서드를 호출하여 준다.
+    //MARK: 추가로 학습해야함
+    override func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        dataSource.moveParkAtIndexPath(sourceIndexPath, toIndexPath: destinationIndexPath)
+    }
+    
     
     //헤더부문 커스텀
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
