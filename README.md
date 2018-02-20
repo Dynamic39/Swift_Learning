@@ -893,6 +893,7 @@ Swift에서는 상위 세가지 개념들이 유기적인 관계를 가지며, �
  	- UIView 안에 다른 ViewController를 설정, 그안에 ScrollView를 삽입하여 진행
  	- Inset, Padding, ScrollView Contents Inset 설정방법
  	- Keyboard Inset
+ 	- viewcontroller 생성 및, page controll
  	- [참고링크](https://github.com/Dynamic39/Swift_Learning/tree/master/01_Tutorials/ScrollView)
 
  	
