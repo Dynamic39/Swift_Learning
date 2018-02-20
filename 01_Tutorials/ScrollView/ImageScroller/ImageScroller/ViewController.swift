@@ -28,14 +28,30 @@ class ViewController: UIViewController {
         imageView.frame.size = (imageView.image?.size)!
         //Delegate 채택
         scrollView.delegate = self
+        setZoomParametersForSize(scrollView.bounds.size)
+        recenterImage()
+        
+    }
     
+    //이미지를 가운데로 정렬 시켜준다.
+    func recenterImage() {
+        
+        //ScrollView size와 imageView size를 가져온다.
+        let scrollViewSize = scrollView.bounds.size
+        let imageSize = imageView.frame.size
+        
+        //가운데 정렬을 하기 위하여 각각의 사이즈를 비교, 가운데를 맞춰주기 위한 수식을 넣어 준다.
+        let horizontalSpace = imageSize.width < scrollViewSize.width ? (scrollViewSize.width - imageSize.width) / 2 : 0
+        let verticalSpace = imageSize.height < scrollViewSize.height ? (scrollViewSize.height - imageSize.height) / 2 : 0
+        
+        //ScrollView에 인셋을 넣어준다.
+        scrollView.contentInset = UIEdgeInsets(top: verticalSpace, left: horizontalSpace, bottom: verticalSpace, right: horizontalSpace)
         
     }
     
     override func viewWillLayoutSubviews() {
-
         setZoomParametersForSize(scrollView.bounds.size)
-        
+        recenterImage()
     }
     
     func setZoomParametersForSize(_ scrollViewSize: CGSize) {

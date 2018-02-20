@@ -855,6 +855,7 @@ Swift에서는 상위 세가지 개념들이 유기적인 관계를 가지며, �
  	- 모르는 문법에 대한 재학습(convenience init) [참고링크](http://minsone.github.io/mac/ios/swift-initialization-summary)
  	- CollectionView FloyLayout, Animation effect
  	- Gesture : Moving cells
+ 	- [참고링크](https://github.com/Dynamic39/Swift_Learning/tree/master/01_Tutorials/CollectionView_Custom)
 
 ### Part7
 
@@ -873,7 +874,9 @@ Swift에서는 상위 세가지 개념들이 유기적인 관계를 가지며, �
  	
  	- Frame과 bounds 의 차이
  	- UIView를 이용한, 간단한 Sample Code 작성
- 	- 
+ 	- ScrollView Size와 image의 bounds의 사이즈를 비교하여, 기기 사이즈에 따른 zoom을 설정한다.
+ 	- ScrollView AutoLayout
+ 	- [참고링크]()
 
 ### Part8  
 
