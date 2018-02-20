@@ -894,7 +894,18 @@ Swift에서는 상위 세가지 개념들이 유기적인 관계를 가지며, �
  	- Inset, Padding, ScrollView Contents Inset 설정방법
  	- Keyboard Inset
  	- viewcontroller 생성 및, page controll
+ 	- page controll - padding size, frame size control(inset, offset control), number of pages
  	- [참고링크](https://github.com/Dynamic39/Swift_Learning/tree/master/01_Tutorials/ScrollView)
+
+3. ScrollView - Advanced
+
+ 1) 학습할 내용
+ 	
+ 	- Two ScrollView recipes
+ 	- Slide out navigation
+ 	- Custom Pull Refresh
+ 	- Animated Element
+ 	
 
  	
 

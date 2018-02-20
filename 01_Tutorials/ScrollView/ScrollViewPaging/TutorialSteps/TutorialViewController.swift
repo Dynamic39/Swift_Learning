@@ -27,6 +27,9 @@ class TutorialViewController: UIViewController {
     //스크롤뷰 아웃렛
     @IBOutlet weak var scrollView: UIScrollView!
     
+    //페이지 컨트롤 아웃렛
+    @IBOutlet weak var pageControl: UIPageControl!
+    
     var pages = [TutorialStepViewController]()
     
     override func viewDidLoad() {
@@ -43,9 +46,12 @@ class TutorialViewController: UIViewController {
         
         let views:[String: UIView] = ["view":view, "page1":page1.view, "page2":page2.view, "page3":page3.view, "page4":page4.view, "page5":page5.view]
         
+        //각각의 마진을 설정하는 딕셔너리를 설정
+        let metrics = ["edgeMargin": 10, "betweenMargins": 20]
+        
         //오토레이아웃 설정
         let verticalContraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|[page1(==view)]|", options: [], metrics: nil, views: views)
-        let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|[page1(==view)][page2(==view)][page3(==view)][page4(==view)][page5(==view)]|", options: [], metrics: nil, views: views)
+        let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-edgeMargin-[page1(==view)]-betweenMargins-[page2(==view)]-betweenMargins-[page3(==view)]-betweenMargins-[page4(==view)]-betweenMargins-[page5(==view)]-edgeMargin-|", options: [], metrics: metrics, views: views)
         
         NSLayoutConstraint.activate(verticalContraints + horizontalConstraints)
     }
@@ -75,6 +81,17 @@ class TutorialViewController: UIViewController {
 
 //scrollView delegate를 사용하기 위한 익스텐션 호출
 extension TutorialViewController: UIScrollViewDelegate {
+    
+    //페이징 컨트롤과 연결하기 위한 메서드
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        //전체 페이지의 길이를 나타낸다.
+        let pageWidth = scrollView.bounds.width
+        //전체 페이지 길이에서 각각의 offset x 를 나눔으로서 현재 페이지를 알 수 있게 한다.
+        let pageFraction = scrollView.contentOffset.x / pageWidth
+        pageControl.currentPage = Int(round(pageFraction))
+        
+    }
     
 }
 
