@@ -29,7 +29,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="Zw2-Kv-VaA">
-                                        <rect key="frame" x="0.0" y="28" width="320" height="664.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="320" height="247.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ray" translatesAutoresizingMaskIntoConstraints="NO" id="3Xd-Rx-6Do">
                                                 <rect key="frame" x="60" y="0.0" width="200" height="200"/>
@@ -45,7 +45,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="aTC-6n-eNR">
-                                                <rect key="frame" x="0.0" y="247.5" width="320" height="417"/>
+                                                <rect key="frame" x="0.0" y="247.5" width="0.0" height="0.0"/>
                                                 <mutableString key="text">Ray is part of a great team - the raywenderlich.com team, a group of over 100 developers and editors from across the world. He and the rest of the team are passionate both about making apps and teaching others the techniques to make them.
 
 Ray founded the software development company called Razeware which employs a variety of developers all over the world to design tutorials and even better apps.

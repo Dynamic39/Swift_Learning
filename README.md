@@ -876,9 +876,29 @@ Swift에서는 상위 세가지 개념들이 유기적인 관계를 가지며, �
  	- UIView를 이용한, 간단한 Sample Code 작성
  	- ScrollView Size와 image의 bounds의 사이즈를 비교하여, 기기 사이즈에 따른 zoom을 설정한다.
  	- ScrollView AutoLayout
- 	- [참고링크]()
+ 	- [참고링크](https://github.com/Dynamic39/Swift_Learning/tree/master/01_Tutorials/ScrollView)
+ 
+2. ScrollView - Intermediate
 
-### Part8  
+ 1) 학습할 내용
+ 
+ 	- Embedding Layouts
+ 	- ScrollView in ScrollView
+ 	- ScrollView inset
+ 	- Paging ScrollViews
+
+ 2) 실습 내용
+ 
+ 	- ScrollView in ScrollView 진행
+ 	- UIView 안에 다른 ViewController를 설정, 그안에 ScrollView를 삽입하여 진행
+ 	- Inset, Padding, ScrollView Contents Inset 설정방법
+ 	- Keyboard Inset
+ 	- [참고링크](https://github.com/Dynamic39/Swift_Learning/tree/master/01_Tutorials/ScrollView)
+
+ 	
+
+### Part8
+
 
  
 
