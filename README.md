@@ -905,6 +905,14 @@ Swift에서는 상위 세가지 개념들이 유기적인 관계를 가지며, �
  	- Slide out navigation
  	- Custom Pull Refresh
  	- Animated Element
+
+ 2) 실습내용
+ 
+ 	- App Delegate에서 뷰컨트롤러 인스탠스 생성을 통한 초기화
+ 	- Protocol 복습
+ 	- ScrollView를 활용한, 슬라이드 효과
+ 	- Animation 효과
+ 	- [참고링크]()
  	
 
  	

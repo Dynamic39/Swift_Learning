@@ -24,10 +24,14 @@ import UIKit
 
 class SidebarViewController: UIViewController {
     
+    //매뉴선택하는 컨트롤러
     var leftViewController: UIViewController!
+    //메인 컨트롤러
     var mainViewController: UIViewController!
+    
     var overlap: CGFloat!
     var scrollView: UIScrollView!
+    var firstTime:Bool = true
     
     required init(coder aDecoder: NSCoder) {
         assert(false, "Use init(leftViewController:mainViewController:overlap:)")
@@ -50,6 +54,9 @@ class SidebarViewController: UIViewController {
     func setupScrollView() {
         scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.isPagingEnabled = true
+        scrollView.bounces = false
+        
         view.addSubview(scrollView)
         
         let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|[scrollView]|", options: [], metrics: nil, views: ["scrollView": scrollView])
@@ -57,8 +64,67 @@ class SidebarViewController: UIViewController {
         NSLayoutConstraint.activate(horizontalConstraints + verticalConstraints)
     }
     
+    override func viewDidLayoutSubviews() {
+        if firstTime {
+            firstTime = false
+            closeMenuAnimated(false)
+        }
+    }
+    
+    func closeMenuAnimated(_ animated: Bool) {
+        scrollView.setContentOffset(CGPoint(x: leftViewController.view.frame.width, y: 0), animated: animated)
+    }
+    
+    //메뉴 버튼 활성화를 위한 메서드
+    func leftMenuIsOpen() -> Bool {
+      return scrollView.contentOffset.x == 0
+    }
+    
+    func openLefMenuAnimated(_ animated:Bool) {
+        scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: animated)
+    }
+    
+    func toggleLeftAnimated(_ animated:Bool) {
+        if leftMenuIsOpen() {
+            closeMenuAnimated(animated)
+        } else {
+            openLefMenuAnimated(animated)
+        }
+    }
+    
+    
     func setupViewControllers() {
+        addViewController(leftViewController)
+        addViewController(mainViewController)
+        addShadowToView(mainViewController.view)
         
+        //오토 레이아웃
+        let views: [String: UIView] = ["left": leftViewController.view, "main": mainViewController.view, "outer": view]
+        let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "|[left][main(==outer)]|", options: [.alignAllTop, .alignAllBottom], metrics: nil, views: views)
+        let leftWidthConstraint = NSLayoutConstraint(item: leftViewController.view, attribute: .width, relatedBy: .equal, toItem: view, attribute: .width, multiplier: 1.0, constant: -overlap)
+        let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|[main(==outer)]|", options: [], metrics: nil, views: views)
+        
+        NSLayoutConstraint.activate(horizontalConstraints + verticalConstraints + [leftWidthConstraint])
+
+    }
+    
+    //뷰컨트롤러를 추가함
+    private func addViewController(_ viewController: UIViewController) {
+        viewController.view.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.addSubview(viewController.view)
+        addChildViewController(viewController)
+        viewController.didMove(toParentViewController: self)
+    }
+    
+    //뷰컨트롤러 사이에 음영을 넣는 메서드를 만들어 준다.
+    private func addShadowToView(_ destView:UIView) {
+        
+        destView.layer.shadowPath = UIBezierPath(rect: destView.bounds).cgPath
+        destView.layer.shadowRadius = 2.5
+        destView.layer.shadowOffset = CGSize(width: 0, height: 0)
+        destView.layer.shadowOpacity = 1.0
+        destView.layer.shadowColor = UIColor.black.cgColor
+
     }
 }
 

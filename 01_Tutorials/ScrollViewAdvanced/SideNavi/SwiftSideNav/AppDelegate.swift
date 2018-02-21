@@ -33,6 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //아이콘이 보여지는 부분과, 매뉴부분의 네비게이션 컨트롤러를 조정하는 두개의 네비게이션 컨트롤러 선언
     var iconsNav: UINavigationController!
     var menuNav: UINavigationController!
+    var sideBarVC: SidebarViewController!
     
     //앱이 종료되었을때, 실행되는 부문
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -60,9 +61,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         menuVC.delegate = self
         menuNav = UINavigationController(rootViewController: menuVC)
         
+        sideBarVC = SidebarViewController(leftViewController: menuNav, mainViewController: iconsNav, overlap: 70)
+        
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = UIColor.white
-        window?.rootViewController = iconsNav
+        
+        window?.rootViewController = sideBarVC
         window?.makeKeyAndVisible()
         
         return true
@@ -75,14 +79,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate: IconTableViewControllerDelegate {
     func iconTableViewControllerDidTapMenuButton(_ controller: IconTableViewController) {
         //탭버튼이 실행되었을때, 메뉴쪽으로 넘어 갈 수 있도록 구현하여 준다.
-        window?.rootViewController = menuNav
+        //window?.rootViewController = menuNav
+        sideBarVC.toggleLeftAnimated(true)
     }
 }
 
 //MenuTableViewControllerDelegate 구현부
 extension AppDelegate: MenuTableViewControllerDelegate {
     func menuTableViewController(_ controller: MenuTableViewController, didSelectRow row: Int) {
-        window?.rootViewController = iconsNav
+        
+        //window?.rootViewController = iconsNav
         
         //선택된 row에 따라 아이콘 뷰 컨트롤러가 다르게 될 수 있도록 작성하여 준다.
         let destinationViewController = iconViewControllers[row]
@@ -90,6 +96,8 @@ extension AppDelegate: MenuTableViewControllerDelegate {
         if iconsNav.topViewController != destinationViewController {
             iconsNav.setViewControllers([destinationViewController], animated: true)
         }
+        
+        sideBarVC.closeMenuAnimated(true)
     }
 }
 

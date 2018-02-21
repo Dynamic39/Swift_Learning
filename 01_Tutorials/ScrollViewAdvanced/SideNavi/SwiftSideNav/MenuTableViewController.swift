@@ -32,8 +32,10 @@ class MenuTableViewController: UITableViewController {
     weak var delegate: MenuTableViewControllerDelegate?
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        tableView.deselectRow(at: indexPath, animated: true)
         delegate?.menuTableViewController(self, didSelectRow: indexPath.row)
-        print("선택되는 인덱스", indexPath.row)
+        //print("선택되는 인덱스", indexPath.row)
     }
 }
 
