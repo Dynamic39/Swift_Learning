@@ -24,12 +24,20 @@ import UIKit
 
 private let sceneHeight: CGFloat = 180
 
+protocol RefreshViewDelegate: class {
+    func refreshViewDidRefresh(refreshView: RefreshView)
+}
+
 class RefreshView: UIView {
     
-    //
+    
     private unowned var scrollView: UIScrollView
     var progressPercentage: CGFloat = 0
     var refreshItems = [RefreshItem]()
+    var refreshing = false
+    weak var delegate: RefreshViewDelegate?
+    var signRefreshItem: RefreshItem!
+    var isSignVisible = false
     
     required init?(coder aDecoder: NSCoder) {
         scrollView = UIScrollView()
@@ -61,13 +69,29 @@ class RefreshView: UIView {
 
             RefreshItem(view: catImageView, centerEnd: CGPoint(x: bounds.midX, y: bounds.height - groundImageView.bounds.height/2 - catImageView.bounds.height / 2), parallaxRatio: 1, sceneHeight: sceneHeight),
 
-            RefreshItem(view: capeFrontImageView, centerEnd: CGPoint(x: bounds.midX, y: bounds.height-groundImageView.bounds.height/2 - capeFrontImageView.bounds.height/2), parallaxRatio: -1, sceneHeight: sceneHeight),
+            RefreshItem(view: capeFrontImageView, centerEnd: CGPoint(x: bounds.midX, y: bounds.height-groundImageView.bounds.height/2 - capeFrontImageView.bounds.height/2), parallaxRatio: -1, sceneHeight: sceneHeight)
             
         ]
         
         for refreshitem in refreshItems {
             addSubview(refreshitem.view)
         }
+        
+        let signImageView = UIImageView(image: UIImage(named: "sign"))
+       signRefreshItem = RefreshItem(view: signImageView, centerEnd: CGPoint(x: bounds.midX, y: bounds.height-signImageView.bounds.height/2), parallaxRatio: 0.5, sceneHeight: sceneHeight)
+        
+        addSubview(signImageView)
+    }
+    
+    func showSign(_ show: Bool) {
+        if isSignVisible == show {
+            return
+        }
+        isSignVisible = show
+        UIView.animate(withDuration: 0.2, delay: 0, options: [.curveEaseInOut, .beginFromCurrentState], animations: {
+            () -> Void in
+            self.signRefreshItem.updateViewPositionForPercentage(show ? 1 : 0)
+        }, completion: nil)
     }
     
     func updateRefreshItemPositions() {
@@ -89,16 +113,78 @@ class RefreshView: UIView {
         let value = progressPercentage * 0.7 + 0.2
         backgroundColor = UIColor(displayP3Red: value, green: value, blue: value, alpha: 1)
     }
+    
+    //리프레시 잠금설정
+    func beginRefreshing() {
+        refreshing = true
+        UIView.animateKeyframes(withDuration: 0.4, delay: 0, options: UIViewKeyframeAnimationOptions(), animations: {
+            () -> Void in
+            self.scrollView.contentInset.top += sceneHeight
+        }, completion: { (_) -> Void in
+            
+        })
+        
+        //추가 애니매이션
+        let cape = refreshItems[5].view
+        let cat = refreshItems[4].view
+        cape.transform = CGAffineTransform(rotationAngle: CGFloat(-Double.pi/32))
+        cat.transform = CGAffineTransform(translationX: 1.0, y: 0)
+        UIView.animate(withDuration: 0.2, delay: 0, options: [.repeat, .autoreverse], animations: {
+            () -> Void in
+            cape.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi/32))
+        }, completion: nil)
+        
+        let buildings = refreshItems[0].view
+        let ground = refreshItems[2].view
+        
+        UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions(), animations: {
+            () -> Void in
+            ground.center.y += sceneHeight
+            buildings.center.y += sceneHeight
+        }, completion: nil)
+        
+    }
+    func endRefreshing() {
+        refreshing = false
+        UIView.animateKeyframes(withDuration: 0.4, delay: 0, options: UIViewKeyframeAnimationOptions(), animations: {
+            () -> Void in
+            self.scrollView.contentInset.top -= sceneHeight
+        }, completion: { (_) -> Void in
+            
+        })
+        
+        let cape = refreshItems[5].view
+        let cat = refreshItems[4].view
+        
+        cape.transform = CGAffineTransform.identity
+        cat.transform = CGAffineTransform.identity
+        cape.layer.removeAllAnimations()
+        cat.layer.removeAllAnimations()
+        
+    }
 }
 
 extension RefreshView: UIScrollViewDelegate {
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        if !refreshing && progressPercentage == 1 {
+            beginRefreshing()
+            targetContentOffset.pointee.y = -scrollView.contentInset.top
+            delegate?.refreshViewDidRefresh(refreshView: self)
+        }
+    }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if refreshing {
+            return
+        }
         
         let refreshViewVisibleHeight = max(0, -(scrollView.contentOffset.y + scrollView.contentInset.top))
         progressPercentage = min(1, refreshViewVisibleHeight / sceneHeight)
         updateBackgroundColor()
         print("Progress Percentage:", progressPercentage)
         updateRefreshItemPositions()
+        showSign(progressPercentage == 1)
         
     }
 }

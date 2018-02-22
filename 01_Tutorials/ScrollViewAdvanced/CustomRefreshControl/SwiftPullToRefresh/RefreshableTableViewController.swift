@@ -24,6 +24,13 @@ import UIKit
 
 private let refreshViewHeight: CGFloat = 200
 
+func delayBySeconds(_ seconds: Double, delayedCode: @escaping() -> ()) {
+    let targetTime = DispatchTime.now() + Double(Int64(Double(NSEC_PER_SEC) * seconds)) / Double(NSEC_PER_SEC)
+    
+    DispatchQueue.main.asyncAfter(deadline: targetTime) {
+        delayedCode()
+    }
+}
 
 class RefreshableTableViewController: UITableViewController {
     
@@ -35,10 +42,27 @@ class RefreshableTableViewController: UITableViewController {
         refreshView = RefreshView(frame: CGRect(x: 0, y: -refreshViewHeight, width: view.bounds.width, height: refreshViewHeight), scrollView: tableView)
         refreshView.translatesAutoresizingMaskIntoConstraints = false
         view.insertSubview(refreshView, at: 0)
+        refreshView.delegate = self
+    }
+    
+    override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        
+        refreshView.scrollViewWillEndDragging(scrollView, withVelocity: velocity, targetContentOffset: targetContentOffset)
+        
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         refreshView.scrollViewDidScroll(scrollView)
+    }
+    
+}
+
+extension RefreshableTableViewController: RefreshViewDelegate {
+    
+    func refreshViewDidRefresh(refreshView: RefreshView) {
+        delayBySeconds(3.0) {
+            self.refreshView.endRefreshing()
+        }
     }
     
 }
