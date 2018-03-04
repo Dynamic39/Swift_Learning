@@ -65,6 +65,7 @@ class ViewController: UIViewController {
                 constraint.constant = menuIsOpen ? -100 : 0.0
                 return
             }
+            
         //타이틀 오토레이아웃 조정 - 2
 //            if constraint.identifier == "TitleCenterY" {
 //                constraint.isActive = false
@@ -89,12 +90,16 @@ class ViewController: UIViewController {
         
         menuHeightConstraint.constant = menuIsOpen ? 200.0 : 60
         closeButtonTrailing.constant = menuIsOpen ? 16.0 : 8.0
+
         
-        
+        //애니메이션에 스프링 효과를 추가함.
         UIView.animate(
-            withDuration: 0.33,
+            withDuration: 1.0,
             delay: 0.0,
-            options: .curveEaseIn,
+            //스프링 효과를 주는 인자값
+            usingSpringWithDamping: 0.4,
+            initialSpringVelocity: 10,
+            options: [.allowUserInteraction],
             animations: {
                 
                 //앵글 설정 -> + -> x 로 만들어줌
@@ -123,31 +128,68 @@ class ViewController: UIViewController {
         view.layoutIfNeeded()
         
         //애니메이션 효과
-        UIView.animate(withDuration: 0.8, delay: 0.0, animations: {
+        UIView.animate(
+            withDuration: 0.8,
+            delay: 0.0,
+            
+            //스프링 효과를 주는 인자값
+            usingSpringWithDamping: 0.6,
+            initialSpringVelocity: 10,
+            
+            animations: {
             conBottom.constant = -imageView.frame.size.height / 2
             conWidth.constant = 0.0
             self.view.layoutIfNeeded()
         }, completion: nil)
         
         //애니매이션 아웃
-        UIView.animate(withDuration: 0.67, delay: 2.0, animations: {
-            conBottom.constant = imageView.frame.size.height
-            conWidth.constant = -50
-            self.view.layoutIfNeeded()
-        }, completion: {_ in
-            
-        })
         
+        //UIView의 Transition의 기능을 활용하여 진행
+        delay(seconds: 1.0) {
+            UIView.transition(
+                with: imageView,
+                duration: 1.0,
+                options: [.transitionFlipFromBottom],
+                animations: {
+                    imageView.isHidden = true
+            },
+            completion: {_ in
+                
+            }
+            )
+        }
         
-        
-        
-        
+        //애니매에션 효과를 주어서 없애기
+//        UIView.animate(withDuration: 0.67, delay: 2.0, animations: {
+//            conBottom.constant = imageView.frame.size.height
+//            conWidth.constant = -50
+//            self.view.layoutIfNeeded()
+//        }, completion: {_ in
+//
+//        })
     }
     
     func transitionCloseMenu() {
         delay(seconds: 0.35, completion: {
             self.toggleMenu(self)
         })
+        
+        let titleBar = slider.superview!
+        
+        UIView.transition(
+            with: titleBar,
+            duration: 0.5,
+            options: [
+                .curveEaseOut,
+                .transitionFlipFromBottom
+            ],
+            animations: {
+                self.slider.removeFromSuperview()
+        },
+            completion: {_ in
+                titleBar.addSubview(self.slider)
+        }
+        )
     }
 }
 
