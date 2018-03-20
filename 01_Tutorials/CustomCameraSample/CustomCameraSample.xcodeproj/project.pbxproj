@@ -13,6 +13,7 @@
 		FC16543F205F8CDC00EDD22E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC16543E205F8CDC00EDD22E /* Assets.xcassets */; };
 		FC165442205F8CDC00EDD22E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC165440205F8CDC00EDD22E /* LaunchScreen.storyboard */; };
 		FC16544A205F8EDC00EDD22E /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC165449205F8EDC00EDD22E /* PreviewViewController.swift */; };
+		FC3990242060CB690025D090 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3990232060CB690025D090 /* FilterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		FC165441205F8CDC00EDD22E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FC165443205F8CDC00EDD22E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FC165449205F8EDC00EDD22E /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
+		FC3990232060CB690025D090 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			children = (
 				FC165437205F8CDB00EDD22E /* AppDelegate.swift */,
 				FC165439205F8CDC00EDD22E /* ViewController.swift */,
+				FC3990232060CB690025D090 /* FilterViewController.swift */,
 				FC165449205F8EDC00EDD22E /* PreviewViewController.swift */,
 				FC16543B205F8CDC00EDD22E /* Main.storyboard */,
 				FC16543E205F8CDC00EDD22E /* Assets.xcassets */,
@@ -141,6 +144,7 @@
 			files = (
 				FC16543A205F8CDC00EDD22E /* ViewController.swift in Sources */,
 				FC165438205F8CDB00EDD22E /* AppDelegate.swift in Sources */,
+				FC3990242060CB690025D090 /* FilterViewController.swift in Sources */,
 				FC16544A205F8EDC00EDD22E /* PreviewViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -221,6 +225,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = "";
 			};
 			name = Debug;
 		};
@@ -270,6 +275,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = "";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

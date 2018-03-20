@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation // 해당 기능을 활용하여 캡쳐 기능을 활성화 한다.
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
   
   //캡쳐 세션 활성화
   var captureSession = AVCaptureSession()
@@ -24,8 +24,10 @@ class ViewController: UIViewController {
   
   //카메라 레이아웃을 설정한다.
   var cameraPreviewLayer: AVCaptureVideoPreviewLayer?
-  
   var image:UIImage?
+  
+  //Camera에 실시간으로 필터를 씌우기 위한 작업을 한다.
+  let videoOutput = AVCaptureVideoDataOutput()
   
 
   override func viewDidLoad() {
@@ -75,6 +77,8 @@ class ViewController: UIViewController {
       photoOutput = AVCapturePhotoOutput()
       photoOutput?.setPreparedPhotoSettingsArray([AVCapturePhotoSettings(format: [AVVideoCodecKey:AVVideoCodecType.jpeg])], completionHandler: nil)
       captureSession.addOutput(photoOutput!)
+      
+      
     } catch {
       print("error")
       
@@ -97,6 +101,14 @@ class ViewController: UIViewController {
   
   func startRunningCaptureSession() {
     captureSession.startRunning()
+    
+  }
+  
+  func realTimeFilterAccess() {
+    
+    //videoOutput.setSampleBufferDelegate(self, queue: dispatch_queue_create("sample buffer delegate", DISPATCH_QUEUE_SERIAL))
+    videoOutput.setSampleBufferDelegate(self, queue: DispatchQueue.global())
+    captureSession.addOutput(videoOutput)
     
   }
   

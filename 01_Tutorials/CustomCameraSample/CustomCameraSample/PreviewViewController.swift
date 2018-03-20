@@ -8,21 +8,35 @@
 
 import UIKit
 
+
 class PreviewViewController: UIViewController {
 
   @IBOutlet weak var photo: UIImageView!
+  @IBOutlet weak var filterImageView: UIImageView!
+  
+  //필터 적용할 이름
+  var CIFilterNames = [
+    "CIPhotoEffectChrome",
+    "CIPhotoEffectFade",
+    "CIPhotoEffectInstant",
+    "CIPhotoEffectNoir",
+    "CIPhotoEffectProcess",
+    "CIPhotoEffectTonal",
+    "CIPhotoEffectTransfer",
+    "CISepiaTone"
+  ]
   
   var image:UIImage!
   
+  
+  
     override func viewDidLoad() {
         super.viewDidLoad()
-      
       photo.image = self.image
       
-      
-
-        // Do any additional setup after loading the view.
     }
+  
+  
   
   @IBAction func cancelAction(_ sender: Any) {
     dismiss(animated: true, completion: nil)
