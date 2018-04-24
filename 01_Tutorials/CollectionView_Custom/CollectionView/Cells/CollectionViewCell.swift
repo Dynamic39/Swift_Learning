@@ -31,6 +31,7 @@
 import UIKit
 
 class CollectionViewCell: UICollectionViewCell {
+  
 	@IBOutlet private weak var titleLabel:UILabel!
 	@IBOutlet private weak var selectionImage:UIImageView!
     
